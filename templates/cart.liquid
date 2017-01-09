@@ -1,0 +1,110 @@
+<!-- /templates/cart.liquid -->
+{% comment %}
+
+  For info on test orders:
+    - General http://docs.shopify.com/manual/your-store/orders/test-orders
+    - Shopify Payments - http://docs.shopify.com/manual/more/shopify-payments/testing-shopify-payments
+
+{% endcomment %}
+
+{% include 'small-header' %}
+
+<section class="page-cart">
+  <div class="container">
+    
+    <div class="row">
+      	<div class="inpage-title text-center">
+      		<h1>{{ 'cart.general.title' | t }}</h1>
+      	</div>
+    </div>
+
+      {% if cart.item_count > 0 %}
+
+        <form action="/cart" method="post" novalidate class="cart table-wrap">
+            <div class="row">
+                <div class="cart-head hidden-xs">
+                    <div class="col-sm-6">	
+                        <h3>{{ 'cart.label.product' | t }}</h3>
+                    </div>
+                    <div class="col-sm-3">
+                        <h3>{{ 'cart.label.quantity' | t }}</h3>
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        <h3>{{ 'cart.label.total' | t }}</h3>
+                    </div>
+                </div>
+            </div>
+
+            {% for item in cart.items %}
+                <div class="row cart-row">
+                    <div class="cart-item">
+                        <div class="col-sm-4">
+                            <div class="cart-item-title">
+                              <h4><a href="{{ item.url }}">{{ item.product.title }}</a></h4>
+                                <p>
+                                    {% unless item.variant.title contains 'Default' %}
+                                      <small>{{ item.variant.title }}</small>
+                                    {% endunless %}
+                                </p>
+                              	<a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart-remove">
+                                  <small><i class="fa fa-times"></i></small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <a href="{{ item.url | within: collections.all }}" class="cart__image">
+                              {% comment %}
+                                More image size options at:
+                                  - http://docs.shopify.com/themes/filters/product-img-url
+                              {% endcomment %}
+                              <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                            </a>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
+                        </div>
+                        <div class="col-sm-3 text-right">
+                          <h4 class="line-total"><strong>{{ item.line_price | money }}</strong></h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="row cart-row action-row">
+                <div class="{% if settings.show_datepicker == true %}col-sm-3{% else %} col-sm-6{% endif %}">
+                    {% if settings.cart_notes_enable %}
+                        <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+                        <textarea name="note" class="input-full {% if settings.show_datepicker == true %}datepicker-height{% endif %}" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+                    {% endif %}
+                </div>
+              	{% if settings.show_datepicker %}
+              	<div class="col-sm-3">
+                  {% include 'delivery-date' %}
+              	</div>
+              	{% endif %}
+                <div class="col-sm-6 text-right">
+                    <p>
+                      <strong><span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span></strong>
+                      <span class="h3 cart__subtotal">{{ cart.total_price | money }}</span>
+                    </p>
+                    <p><em>{{ 'cart.general.shipping_at_checkout' | t }}</em></p>
+                    
+                    <input type="submit" name="checkout" class="btn btn-default checkout-cart pull-right" value="{{ 'cart.general.checkout' | t }}">
+              		<input type="submit" name="update" class="btn btn-primary update-cart pull-right" value="{{ 'cart.general.update' | t }}">  
+              </div>
+            </div>
+
+        </form>
+      {% else %}
+        {% comment %}
+          The cart is empty
+        {% endcomment %}
+        <p class="text-center" style="margin-bottom: 10px;">{{ 'cart.general.empty' | t }}</p>
+        <p class="text-center">{{ 'cart.general.continue_browsing_html' | t }}</p>
+      {% endif %}
+      
+
+  </div>
+</section>
+
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}

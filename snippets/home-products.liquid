@@ -1,0 +1,143 @@
+{% assign featured = settings.home_featured_products %}
+{% assign rows = settings.home_featured_products_row_num %}
+{% assign products_number = rows | times: 8 %}
+
+{% if settings.grid_list_full == 'grid' %}
+  <section class="products-grid  black-friday-products" id="watches">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <div class="title-sep-container title-sep-container-left">
+                  <div class="title-sep"></div>
+                </div>
+                <h2 class="page-title h1-size text-center">All Watches</h2>
+                <div class="title-sep-container title-sep-container-right">
+                  <div class="title-sep"></div>
+                </div>
+              </div>
+              <p class="section-subtitle" style="margin-bottom: 15px !important;">EACH WATCH DONATES TO A PARTICULAR CHARITY</p>
+            </div>
+          </div>
+          
+          <div class="row products-container">
+            
+              {% if settings.grid_type == 'overlay' %}
+                {% for product in collections[featured].products limit: products_number %}
+                    {% include 'product-grid-item' %}
+                {% else %}
+                  {% comment %}
+                    For onboarding new users to your theme, we add some default products and onboarding tutorials to help populate their store
+                  {% endcomment %}
+                  {% unless emptyState %}
+                    {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+                    {% assign emptyState = true %}
+                  {% endunless %}
+
+                  {% include 'onboarding-grid-products' %}
+
+                {% endfor %}
+              {% else %}
+            	{% for product in collections[featured].products limit: products_number %}
+                    {% include 'product-grid-item3-button' %}
+                {% else %}
+                  {% comment %}
+                    For onboarding new users to your theme, we add some default products and onboarding tutorials to help populate their store
+                  {% endcomment %}
+                  {% unless emptyState %}
+                    {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+                    {% assign emptyState = true %}
+                  {% endunless %}
+
+                  {% include 'onboarding-grid-products' %}
+
+                {% endfor %}
+              {% endif %}
+
+          <div class="col-md-4  col-sm-6  col-xs-12 product type-3">
+            <img src="{{ 'lifestyle1.jpg' | asset_url }}" class="img-responsive center-block">
+          </div>
+          <div class="col-md-8  col-sm-6  col-xs-12 product type-3  hidden-sm hidden-xs">
+            <img src="{{ 'lifestyle2.jpg' | asset_url }}" class="img-responsive">
+          </div>
+          <div class="col-md-4  col-sm-6  col-xs-12 product type-3">
+            <img src="{{ 'lifestyle3.jpg' | asset_url }}" class="img-responsive center-block">
+          </div>
+          </div><!-- /.row -->
+      </div><!-- /.container -->
+  </section>
+{% endif %}
+
+{% if settings.grid_list_full == 'list' %}
+  <section class="product-list">
+      <div class="container">
+        {% if settings.home_products_title_show %}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <div class="title-sep-container title-sep-container-left">
+                  <div class="title-sep"></div>
+                </div>
+                <h2 class="page-title h1-size text-center">{{ settings.home_products_title }}</h2>
+                <div class="title-sep-container title-sep-container-right">
+                  <div class="title-sep"></div>
+                </div>
+              </div>
+              <p class="section-subtitle">{{ settings.home_products_subtitle }}</p>
+            </div>
+          </div>
+          {% endif %}
+        {% for product in collections[featured].products limit: products_number %}
+          {% include 'product-list-item' %}
+        {% else %}
+          {% comment %}
+            For onboarding new users to your theme, we add some default products and onboarding tutorials to help populate their store
+          {% endcomment %}
+          {% unless emptyState %}
+            {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+            {% assign emptyState = true %}
+          {% endunless %}
+
+          {% include 'onboarding-list-products' %}
+
+        {% endfor %}
+      </div>
+  </section>
+{% endif %}
+
+{% if settings.grid_list_full == 'full' %}
+  <section class="product-full-width">
+      <div class="container">
+        {% if settings.home_products_title_show %}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <div class="title-sep-container title-sep-container-left">
+                  <div class="title-sep"></div>
+                </div>
+                <h2 class="page-title h1-size text-center">{{ settings.home_products_title }}</h2>
+                <div class="title-sep-container title-sep-container-right">
+                  <div class="title-sep"></div>
+                </div>
+              </div>
+              <p class="section-subtitle">{{ settings.home_products_subtitle }}</p>
+            </div>
+          </div>
+          {% endif %}
+        {% for product in collections[featured].products limit: products_number %}
+          {% include 'product-full-item' %}
+        {% else %}
+          {% comment %}
+            For onboarding new users to your theme, we add some default products and onboarding tutorials to help populate their store
+          {% endcomment %}
+          {% unless emptyState %}
+            {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+            {% assign emptyState = true %}
+          {% endunless %}
+
+          {% include 'onboarding-full-products' %}
+
+        {% endfor %}
+      </div>
+  </section>
+{% endif %}

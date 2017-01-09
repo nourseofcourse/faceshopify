@@ -1,0 +1,118 @@
+<!-- /snippets/product-list-item.liquid -->
+
+{% comment %}
+    Check if the product is on sale and set a variable to be used below.
+{% endcomment %}
+
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+    {% assign on_sale = true %}
+{% endif %}
+
+{% comment %}
+    Check if the product is sold out and set a variable to be used below.
+{% endcomment %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+    {% assign sold_out = false %}
+{% endif %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="product">
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <div class="thumbnail with-info">
+                      {% if sold_out %}
+                        <div class="info info-sold-out">
+                            <div class="align-vertical">
+                                <span>{{ 'products.product.sold' | t }}</span>
+                  				<span>{{ 'products.product.out' | t }}</span>
+                            </div>
+                        </div>
+                      {% endif %}
+                      {% if on_sale %}
+                        {% unless sold_out %}
+                          <div class="info info-on-sale">
+                              <div class="align-vertical">
+                                  <span>{{ 'products.product.on' | t }}</span>
+                  				  <span>{{ 'products.product.sale' | t }}</span>
+                              </div>
+                          </div>
+                        {% endunless %}
+                      {% endif %}
+                        <img src="{{ product.featured_image.src | img_url: '1024x1024' }}" alt="">
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="product-details">
+                      	<h2 class="product-title"><a href="{{ product.url }}">{{ product.title }}</a></h2>
+                        <p class="product-price">
+                          {% unless sold_out %}
+                          {% if on_sale %}
+                            {% if product.price_varies %}
+                              {% assign sale_price = product.price | money %}
+                              <span class="sale-from-price">{{ 'products.general.from_text_html' | t: price: sale_price }}</span>
+                            {% else %}
+                              <span class="new-price">{{ product.price | money }}</span>
+                            {% endif %}
+                          {% else %}
+                            {% if product.price_varies %}
+                              {% assign price = product.price | money %}
+                              <span class="from-price">{{ 'products.general.from_text_html' | t: price: price }}</span>
+                            {% else %}
+                              {{ product.price | money }}
+                            {% endif %}
+                          {% endif %}
+                          {% if on_sale %}
+                            <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                            <s class="old-price">{{ product.compare_at_price | money }}</s>
+                          {% endif %}
+                          {% endunless %}
+                          {% if sold_out %}
+                          	{{ 'products.product.sold_out' | t }}
+                          {% endif %}
+                        </p>
+                        <p>{{ product.description | truncate: 150}}</p>
+
+                        {% unless sold_out %}
+                          {% unless product.price_varies %}
+                            <form action="/cart/add" method="post" enctype="multipart/form-data" class="form-vertical AddToCartForm">
+                              <select name="id" class="product-single__variants productSelect hidden">
+                                {% for variant in product.variants %}
+                                  {% if variant.available %}
+
+                                    {% comment %}
+                                      Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                                    {% endcomment %}
+                                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+                                  {% else %}
+                                    <option disabled="disabled">
+                                      {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                                    </option>
+                                  {% endif %}
+                                {% endfor %}
+                              </select>
+
+                              <button type="submit" name="add" class="btn btn-primary AddToCart">
+                                <i class="fa fa-shopping-cart"></i> <span class="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+                              </button>
+                            </form>
+                           {% endunless %}
+                        {% endunless %}
+
+                        {% if sold_out %}
+                              <a href="{{ product.url }}" class="btn btn-primary">{{ 'products.product.view_product' | t }}</a>
+                        {% endif %}
+                              
+                        {% if product.price_varies %}
+                              <a href="{{ product.url }}" class="btn btn-primary">{{ 'products.product.select_options' | t }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /.row -->

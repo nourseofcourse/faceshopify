@@ -1,0 +1,69 @@
+<!-- begin site-footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <ul class="footer-navigation">
+                    {% if shop.customer_accounts_enabled %}
+                        {% if customer  %}
+                            <li><a href="/account"><i class="fa fa-user"></i> Account</a></li>
+                            <li>{{ '<i class="fa fa-lock"></i> Logout' | customer_logout_link }}</li>
+                        {% else %}
+                        <li>{{ '<i class="fa fa-lock"></i> Login' | customer_login_link }}</li>
+                            {% if shop.customer_accounts_optional %}
+                                <li> {{ '<i class="fa fa-user"></i> Create account' | customer_register_link }}</li>
+                            {% endif %}
+                        {% endif %}
+                        {% for link in linklists.footer.links %}
+                            <li class="{% if link.active %} active{% endif %}">
+                              <a href="{{ link.url }}">{{ link.title }}</a>
+                            </li>
+                        {% endfor %}
+                     {% else %}
+                      {% for link in linklists.footer.links %}
+                            <li class="{% if link.active %} active{% endif %}">
+                              <a href="{{ link.url }}">{{ link.title }}</a>
+                            </li>
+                      {% endfor %}
+                     {% endif %}
+                </ul>
+                <ul class="accepted-payments">
+                    {% if settings.show_facebook %}
+                      <li><a href="{{ settings.facebook_link }}"><i class="fa fa-facebook"></i></a></li>
+                    {% endif %}
+                    {% if settings.show_twitter %}
+                      <li><a href="{{ settings.twitter_link }}"><i class="fa fa-twitter"></i></a></li>
+                    {% endif %}
+                    {% if settings.show_google %}
+                      <li><a href="{{ settings.google_link }}"><i class="fa fa-google-plus"></i></a></li>
+                    {% endif %}
+                    {% if settings.show_pinterest %}
+                      <li><a href="{{ settings.pinterest_link }}"><i class="fa fa-pinterest"></i></a></li>
+                    {% endif %}
+                    {% if settings.show_instagram %}
+                    <li><a href="{{ settings.instagram_link }}"><i class="fa fa-instagram"></i></a></li>
+                    {% endif %}
+                </ul>
+                <div class="copyright">
+                    <p>
+                      {% if settings.footer_amex %}
+                        <a href="{{ settings.footer_amex_link }}"><i class="fa fa-cc-amex"></i></a> 
+                      {% endif %}
+                      {% if settings.footer_visa %}
+                        <a href="{{ settings.footer_visa_link }}"><i class="fa fa-cc-visa"></i></a> 
+                      {% endif %}
+                      {% if settings.footer_paypal %}
+                        <a href="{{ settings.footer_paypal_link }}"><i class="fa fa-paypal"></i></a> 
+                      {% endif %}
+                      {% if settings.footer_stripe %}
+                        <a href="{{ settings.footer_stripe_link }}"><i class="fa fa-cc-stripe"></i></a> 
+                      {% endif %}
+                      {% if settings.footer_mastercard %}
+                        <a href="{{ settings.footer_mastercard_link }}"><i class="fa fa-cc-mastercard"></i></a> 
+                      {% endif %}
+                      <br><span>{{ settings.footer_copyright }}</span></p>
+                </div>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>

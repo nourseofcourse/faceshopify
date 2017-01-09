@@ -1,0 +1,74 @@
+<!-- /templates/blog.liquid -->
+
+{% comment %}
+
+  Loop through a defined number of articles with the 'paginate' tag.
+  Don't forget to close the tag after your loop.
+
+{% endcomment %}
+
+{% paginate blog.articles by 5 %}
+
+{% include 'small-header' %}
+
+<section class="blog-list">
+	<div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <div class="inpage-title text-center">
+                  <h1>{{ blog.title }}</h1>
+              </div>
+            </div>
+        </div>
+		{% comment %}
+	      Loop through each article in your blog. This is limited to what you set for pagination above.
+
+	      For more info on article liquid tags:
+	        - http://docs.shopify.com/themes/liquid-variables/article
+	    {% endcomment %}
+
+	    {% for article in blog.articles %}
+			<div class="row">
+				<div class="col-md-12">
+					<div class="post">
+						<div class="row">
+							<div class="col-md-6 col-xs-12">
+								<div class="thumbnail with-info">
+                                  	{% if article.image %}
+                                        {% assign article_image = article | img_url: 'grande' %}
+                                  		<a href="{{ article.url }}">
+                                          <img src="{{ article_image }}" >
+                                        </a>
+                                    {% endif %}
+                                  
+									<div class="info">
+										<div class="align-vertical" style="padding-top: 13.25px;">
+											<span>{{ article.created_at | date: "%d" }}</span>
+											<span>{{ article.created_at | date: "%b" }}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-5 col-md-offset-1">
+								<div class="post-details">
+									<h2 class="page-title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+									{% if article.excerpt.size > 0 %}
+							          {{ article.excerpt }}
+							        {% else %}
+							          <p>{{ article.content | strip_html | truncatewords: 35 }}</p>
+							        {% endif %}
+
+									<a href="{{ article.url }}" class="btn btn-default">{{ 'blogs.article.read_more' | t }} &rarr;</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!-- /.row -->
+		{% endfor %}
+	</div><!-- /.container -->
+</section>
+
+{% include 'pagination' %}
+
+{% endpaginate %}

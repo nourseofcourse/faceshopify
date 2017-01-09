@@ -1,0 +1,19 @@
+<!-- /snippets/home-featured1.liquid -->
+
+{% assign featured1_title = settings.featured1_title %}
+{% assign featured1_description = settings.featured1_description %}
+{% assign featured1_btn_text = settings.featured1_btn_text %}
+{% assign featured1_btn_link = settings.featured1_btn_link %}
+
+<section class="featured-section featured1">
+    <div class="parallax overlay" data-stellar-background-ratio="0.9" style="background: url('{{ 'featured1.jpg' | asset_url }}');"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5 text-left">
+                <h2 class="page-title">{{ settings.featured1_title }}</h2>
+                <p class="description">{{ settings.featured1_description }}</p>
+                <a href="{{ settings.featured1_btn_link }}" class="btn btn-primary">{{ settings.featured1_btn_text }}</a>
+            </div>
+        </div><!--end of row-->
+    </div><!--end of container-->
+</section>

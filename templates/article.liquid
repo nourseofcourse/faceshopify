@@ -1,0 +1,135 @@
+<!-- /templates/article.liquid -->
+
+{% comment %}
+
+  Comments will not appear right after they are submitted, either to be checked for spam
+  or to await moderation. When a comment is submitted, the browser is redirected to a page
+  that includes the new comment id in its URL.
+    Example: http://shopname.myshopify.com/blogs/news/2022072-my-post?comment=3721372
+
+  More information:
+    - http://docs.shopify.com/themes/liquid-variables/comment
+
+{% endcomment %}
+
+<!-- /snippets/small-header.liquid -->
+
+<header class="secondary small">
+    <div class="background-image-holder parallax-background overlay" data-stellar-background-ratio="0.8">
+        <img class="background-image" alt="Collection Background" src="{{ 'secondarybg.jpg' | asset_url }}">
+    </div>
+</header>
+
+<section class="post single-post">
+	<div class="container">
+      	<div class="row">
+          <div class="col-sm-3">
+          	{% include 'blog-sidebar' %} 
+          </div>
+          <div class="col-sm-9">
+       		 <h1>{{ article.title }}</h1>
+             <span class="article date">on {{ article.created_at | date: "%b %d, %Y" }}</span>
+            {% if article.image %}
+                {% assign article_image = article | img_url: 'original' %}
+                <div class="single-featured-image"> 
+            		<img src="{{ article_image }}" >
+            	</div>
+            {% endif %}
+            <div class="post-details">
+                {{ article.content }}
+                {% include 'tags-article' %} 
+              	{% if blog.next_article or blog.previous_article %} 
+                  <hr>
+                  <p class="clearfix">
+                    {% if blog.previous_article %}
+                    <span class="left">
+                      &larr; {{ 'blogs.article.older_post' | t | link_to: blog.previous_article }}
+                    </span>
+                    {% endif %}
+                    {% if blog.next_article %}
+                    <span class="right">
+                      {{ 'blogs.article.newer_post' | t | link_to: blog.next_article }} &rarr;
+                    </span>
+                    {% endif %}
+                  </p>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+	</div><!-- /.container -->
+</section>
+
+{% if blog.comments_enabled? %}
+  <section class="no-padding-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-sm-offset-3">
+          <div id="comments">
+            <h3 class="text-center comments-title">{{ 'blogs.comments.comments_title' | t }}</h3>
+
+            <!-- List all comments -->
+            <ul id="comment-list">
+            {% for comment in article.comments %}
+              <li>
+                  <div class="comment-details">
+                      <span class="comment-author">{{ comment.author }}</span>
+                      <span class="comment-date">{{ comment.created_at | date: "%B %d, %Y" }}</span>
+                  </div>
+                  <div class="comment">
+                      {{ comment.content }}
+                  </div>
+              </li>
+            {% endfor %}
+            </ul>
+
+            <!-- Comment Form -->
+            <div id="comment-form">
+            {% form article %}
+              <h3>Leave a comment</h3>
+
+              <!-- Check if a comment has been submitted in the last request, and if yes display an appropriate message -->
+              {% if form.posted_successfully? %}
+                {% if blog.moderated? %}
+                  <div class="notice">
+                    {{ 'blogs.comments.success_moderated' | t }}
+                  </div>
+                {% else %}
+                  <div class="notice">{{ 'blogs.comments.success' | t }}</div>
+                {% endif %}
+              {% endif %}
+
+              {% if form.errors %}
+                <div class="notice error">{{ 'blogs.comments.notify' | t }}</div>
+              {% endif %}
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="comment_author">{{ 'blogs.comments.name' | t }}</label>
+                  <input type="text" id="comment_author" name="comment[author]" size="40" value="{{form.author}}" class="{% if form.errors contains 'author' %}input-error{% endif %}" />
+                </div>
+                <div class="col-md-6">
+                  <label for="comment_email">{{ 'blogs.comments.email' | t }}</label>
+                  <input type="text" id="comment_email" name="comment[email]" size="40" value="{{form.email}}" class="{% if form.errors contains 'email' %}input-error{% endif %}" />
+                </div>
+                <div class="col-md-12">
+                  <label for="comment_body">{{ 'blogs.comments.message' | t }}</label>
+                  <textarea id="comment_body" name="comment[body]" cols="40" rows="5" class="{% if form.errors contains 'body' %}input-error{% endif %}">{{form.body}}</textarea>
+                </div>
+              </div>
+
+              {% if blog.moderated? %}
+                <p class="hint">{{ 'blogs.comments.moderated' | t }}</p>
+              {% endif %}    
+
+              <input type="submit" value="{{ 'blogs.comments.submit_comment' | t }}" id="comment-submit" />
+            {% endform %}
+            </div>
+            <!-- END Comment Form -->
+
+          </div>
+          <!-- END Comments -->
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}

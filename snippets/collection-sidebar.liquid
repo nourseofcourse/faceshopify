@@ -1,0 +1,110 @@
+<div class="sidebar">
+{% if settings.collection_sidebar_sort_by %}
+  <h2>{{ settings.collection_sidebar_sort_title }}</h2>
+  <div>
+    <ul id="sort-by">
+      <li data-value="manual">Featured</li>
+      <li data-value="price-ascending">Price: Low to High</li>
+      <li data-value="price-descending">Price: High to Low</li>
+      <li data-value="title-ascending">A-Z</li>
+      <li data-value="title-descending">Z-A</li>
+      <li data-value="created-ascending">Oldest to Newest</li>
+      <li data-value="created-descending">Newest to Oldest</li>
+      <li data-value="best-selling">Best Selling</li>
+    </ul>
+  </div>
+
+  <script>
+  Shopify.queryParams = {};
+  if (location.search.length) {
+    for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+      aKeyValue = aCouples[i].split('=');
+      if (aKeyValue.length > 1) {
+        Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+      }
+    }
+  }
+  jQuery('#sort-by').on('click', 'li', function(e) {
+    e.preventDefault();
+    var that = jQuery(this),
+        that_val = that.data('value');
+      Shopify.queryParams.sort_by = that_val;
+      location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
+
+  });
+  </script>
+{% endif %}
+
+{% if settings.collection_sidebar_tags %}
+  <h4>{{ settings.collection_sidebar_tags_title }}</h4>
+  {% if template contains 'collection' and collection.all_tags.size > 0 %}
+
+    {% comment %}
+      Provide a 'catch-all' link at the top of the list,
+      we'd check against the collection.handle, product type, and vendor.
+    {% endcomment %}
+    <ul>
+      {% if current_tags %}
+        <li class="active-filter">
+          {% comment %}
+            Good for /collections/all collection and regular collections
+          {% endcomment %}
+          {% if collection.handle %}
+            <a href="/collections/{{ collection.handle }}">
+              {{ 'collections.sidebar.all' | t }}
+              {% unless collection.title == 'Products' %}
+              {{ collection.title }}
+              {% endunless %}
+            </a>
+
+          {% comment %}
+            Good for automatic type collections
+          {% endcomment %}
+          {% elsif collection.current_type %}
+            <a href="{{ collection.current_type | url_for_type }}">{{ 'collections.sidebar.all_collection' | t: collection_title: collection.title }}</a>
+
+          {% comment %}
+            Good for automatic vendor collections
+          {% endcomment %}
+          {% elsif collection.current_vendor %}
+            <a href="{{ collection.current_vendor | url_for_vendor }}">{{ 'collections.sidebar.all_collection' | t: collection_title: collection.title }}</a>
+          {% endif %}
+        </li>
+      {% endif %}
+
+      {% comment %}
+        And for the good stuff, loop through the tags themselves.
+        Strip the prepended categories if they happen to exist.
+      {% endcomment %}
+      {% for tag in collection.all_tags %}
+        {% assign is_advanced_tag = false %}
+        {% assign cat = tag | split: '_' | first %}
+        {% unless cat == tag %}
+          {% if cat_array contains cat %}
+            {% assign is_advanced_tag = true %}
+            {% if current_tags contains tag %}
+              <li class="active-filter">{{ tag | remove_first: cat | remove_first: '_' }}</li>
+            {% else %}
+              <li>{{ tag | remove_first: cat | remove_first: '_' | link_to_tag: tag }}</li>
+            {% endif %}
+          {% endif %}
+        {% endunless %}
+
+        {% if is_advanced_tag == false %}
+          {% if current_tags contains tag %}
+            <li class="active-filter">{{ tag }}</li>
+          {% else %}
+            <li>{{ tag | link_to_tag: tag }}</li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+    </ul>
+
+  {% else %}
+    <p>{{ 'collections.sidebar.no_tags' | t }}</p>
+  {% endif %}
+{% endif %}
+  <h4>{{ settings.sidebar_categories_title }}</h4>
+  {% include 'category-menu' %}
+</div>

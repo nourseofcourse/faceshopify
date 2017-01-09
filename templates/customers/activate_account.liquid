@@ -1,0 +1,37 @@
+<!-- /templates/customers/activate_account.liquid -->
+
+{% include 'small-header' %}
+<section class="page-content">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-10 col-md-8 col-md-offset-2">
+            <div class="inpage-title text-center">
+                <h1 class="page-title">{{ 'customer.activate_account.title' | t }}</h1>
+                <p>{{ 'customer.activate_account.subtext' | t }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                {% comment %}
+                  This form must use 'activate_customer_password'
+                {% endcomment %}
+                <div class="form-vertical">
+                    {% form 'activate_customer_password' %}
+                        {{ form.errors | default_errors }}
+                        <label for="CustomerPassword" class="hidden-label">{{ 'customer.activate_account.password' | t }}</label>
+                        <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full" placeholder="{{ 'customer.activate_account.password' | t }}">
+
+                        <label for="CustomerPasswordConfirmation" class="hidden-label">{{ 'customer.activate_account.password_confirm' | t }}</label>
+                        <input type="password" value="" name="customer[password_confirmation]" id="CustomerPasswordConfirmation" class="input-full" placeholder="{{ 'customer.activate_account.password_confirm' | t }}">
+                        <div class="btn-group center-btn-group">
+                            <input type="submit" class="btn btn-default" value="{{ 'customer.activate_account.submit' | t }}">
+                            <input type="submit" class="btn btn-primary" name="decline" value="{{ 'customer.activate_account.cancel' | t }}">
+                        </div>
+                    {% endform %}
+                </div>
+            </div>        
+        </div>
+
+    </div>
+</section>

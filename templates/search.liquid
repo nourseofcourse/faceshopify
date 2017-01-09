@@ -1,0 +1,125 @@
+<!-- /templates/search.liquid -->
+
+{% comment %}
+
+  To return only products or pages in results:
+    - http://docs.shopify.com/manual/configuration/store-customization/return-only-product-in-storefront-search-results
+    - Or manually add type=product or type=page to the search URL as a parameter
+
+{% endcomment %}
+{% comment %}
+  Avoid accessing search.results before the opening paginate tag.
+  If you do, the pagination of results will be broken.
+{% endcomment %}
+{% paginate search.results by 6 %}
+
+{% include 'small-header' %}
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                {% if search.performed %}
+                    {% if search.results_count == 0 %}
+                      <h1 class="text-center page-title">{{ 'general.search.no_results_html' | t: terms: search.terms }}</h1>
+                    {% else %}
+                      <h1 class="text-center page-title">{{ 'general.search.results_for_html' | t: terms: search.terms }}</h1>
+                    {% endif %}
+                {% else %}
+                    <h1 class="text-center page-title">{{ 'general.search.title' | t }}</h1>
+                {% endif %}
+
+                {% include 'search-bar' %}
+
+                {% if search.performed %}
+              		<div class="container-liquid">
+                    {% for item in search.results %}
+                        {% comment %}
+                            Check if the product is on sale and set a variable to be used below.
+                        {% endcomment %}
+                        {% assign on_sale = false %}
+                        {% if item.compare_at_price > item.price %}
+                          {% assign on_sale = true %}
+                        {% endif %}
+
+                        {% comment %}
+                          Check if the product is sold out and set a variable to be used below.
+                        {% endcomment %}
+                        {% assign sold_out = true %}
+                        {% if item.available %}
+                          {% assign sold_out = false %}
+                        {% endif %}
+
+                        <!-- begin Search Item-->
+                          
+                            <div class="row {% unless forloop.last %} search-item {% endunless %}">
+                              {% if item.featured_image %}
+                                {% comment %}
+                                  We have a featured_image, so it's likely a product
+                                {% endcomment %}
+                                <div class="col-md-6">
+                                  <div class="search-item-thumbnail">
+                                    <a href="{{ item.url }}" title="{{ item.title | escape }}">
+                                      {{ item.featured_image.src | img_url: 'large' | img_tag: item.featured_image.alt }}
+                                    </a>
+                                  </div>
+                                </div>
+                              {% endif %}
+
+                              {% comment %}
+                                If we don't have a featured_image, add a push-- class to keep the alignment the same
+                              {% endcomment %}
+                              <div class="col-md-6 {% unless item.featured_image %}push--one-third{% endunless %}">
+                                <h3>{{ item.title | link_to: item.url }}</h3>
+
+                                {% if item.price %}
+                                  <p>
+                                    {% comment %}
+                                      You can show a leading 'from' or 'up to' by checking 'product.price_varies'
+                                      if your variants have different prices.
+                                    {% endcomment %}
+                                    {% if on_sale %}
+                                      {% if item.price_varies %}
+                                        {% assign sale_price = item.price | money %}
+                                        {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                                      {% else %}
+                                        <strong>{{ 'products.product.on_sale' | t }}</strong>
+                                        <span itemprop="price">{{ item.price | money }}</span>
+                                      {% endif %}
+                                    {% else %}
+                                      {% if item.price_varies %}
+                                        {% assign price = item.price | money %}
+                                        <span itemprop="price">{{ 'products.general.from_text_html' | t: price: price }}</span>
+                                      {% else %}
+                                        <span itemprop="price">{{ item.price | money }}</span>
+                                      {% endif %}
+                                    {% endif %}
+                                    {% if sold_out %}
+                                      <br><strong>{{ 'products.product.sold_out' | t }}</strong>
+                                    {% endif %}
+                                    {% if on_sale %}
+                                      <br><span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span><s>{{ item.compare_at_price | money }}</s>
+                                    {% endif %}
+                                  </p>
+                                {% endif %}
+
+                                {% comment %}
+                                  Get a brief excerpt of raw text from the page/product
+                                {% endcomment %}
+                                <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
+                              </div>
+                            </div>
+                         
+                    {% endfor %}
+                    </div>
+                {% endif %}
+ 
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section>
+
+
+{% include 'pagination' %}
+
+{% endpaginate %}

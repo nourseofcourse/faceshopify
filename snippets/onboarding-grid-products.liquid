@@ -1,0 +1,28 @@
+<!-- snippets/onboarding-grid-products.liquid -->
+
+<div class="helper-section">
+<div class="helper-note">
+  <span class="helper-icon"></span>
+  <h3>{{ 'collections.onboarding.modal_title' | t }}</h3>
+  <p>{{ 'collections.onboarding.no_products_html' | t }}</p>
+  <p><a href="/admin/products/new" class="admin-btn-primary">{{ 'collections.onboarding.add_product' | t }}</a></p>
+</div>
+{% assign index = 1 %}
+{% for i in (1..6) %}
+        <div class="col-md-4 col-sm-6 col-xs-12 product">
+            {% capture imageUrl %}//cdn.shopify.com/s/images/themes/product-{{ index }}.png{% endcapture %}
+            <div class="thumbnail" style="background-image: url('{{ imageUrl }}');">
+                <div class="product-details text-center">
+                    <div class="align-vertical">
+                      <h3>{{ 'homepage.onboarding.product_title' | t }}</h3>
+                        
+                        <p class="product-price" itemprop="price">
+                      	  $19.99
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% assign index = index | plus: 1 %}
+{% endfor %}
+</div>

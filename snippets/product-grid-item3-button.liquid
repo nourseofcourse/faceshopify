@@ -1,0 +1,91 @@
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  	{% assign on_sale = true %}
+{% endif %}
+
+{% comment %}
+  	Check if the product is sold out and set a variable to be used below.
+{% endcomment %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+  	{% assign sold_out = false %}
+{% endif %}
+
+<!-- PRODUCT -->
+<div class="col-md-4  col-sm-6  col-xs-12 product type-3" id="#{{ product.id }}">
+    <div class="bf-image" data-mh="product">
+        <img src="{{ product.featured_image.src | img_url: 'original' }}" alt="{{ product.product.image.alt }}" data-hover="{{ product.images.last | product_img_url: 'large' }}">
+    	{% if sold_out %}
+          <span class="notify sold">sold</span>
+        {% endif %}
+        {% if on_sale %}
+          <span class="notify sale" style="right: 15px;">sale</span>
+        {% endif %}
+  	</div>
+    <div class="description">
+        <h2 class="text-center title bf-title">{{ product.title | remove: 'Watch' }} 
+          <span class="bf-price">{{ product.price | money | remove: '.00' }}</span>
+          <span class="bf-price  bf-price--slash">{{ product.compare_at_price | money | remove: '.00' }}</span>
+        </h2>
+        <p class="bf-metric">{{ product.metafields.product.metric }}</p>
+        
+        <form action="/cart/add" method="post" enctype="multipart/form-data" class="form-vertical AddToCartForm">
+
+                  {% assign product_qty = 0 %}
+                    {% for variant in product.variants %}
+                      {% if variant.inventory_quantity > 0 %}
+                        {% assign product_qty = product_qty | plus: variant.inventory_quantity %}
+                      {% endif %}
+                  {% endfor %}
+
+                  <div class="variant-options {% unless product.available and product.variants.size > 1 %}hidden{% endunless %}">
+
+                      {% if product.available and product.variants.size > 1 %}
+                        {% for option in product.options %}
+                          {% include 'swatch' with option %}
+                        {% endfor %}
+                      {% endif %}
+
+                    {% comment %}
+                      Add product variants as a dropdown.
+                        - By default, each variant (or combination of variants) will display as its own <option>
+                        - To separate these into multiple steps, which we suggest, use option_selection.js (see below)
+
+                      You can leverage jQuery to add a callback on page load and each time the select element changes:
+                        - Include option_selection.js (as seen at the bottom of this file)
+                        - This allows you to use JavaScript anytime the variant dropdown changes
+                        - This also separates out your variant options (ie. size, color, etc.) to separate select elements
+
+                      For more information on products with multiple options, visit:
+                        - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
+                    {% endcomment %}
+                    <select name="id" id="productSelect" class="product-single__variants">
+                      {% for variant in product.variants %}
+                        {% if variant.available %}
+
+                          {% comment %}
+                            Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                          {% endcomment %}
+                          <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+                        {% else %}
+                          <option disabled="disabled">
+                            {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                          </option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                  </div>
+
+                    <div class="addtocart-wrapper">
+                      <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+
+                      <button type="submit" name="add" class="bf-btn bf-btn--default AddToCart">
+                        <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+                      </button>
+                    </div>
+                </form>
+    </div>
+</div>
+<!-- END PRODUCT -->

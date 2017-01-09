@@ -1,0 +1,90 @@
+<!-- /templates/customers/login.liquid -->
+
+{% include 'small-header' %}
+<section class="page-content">
+    <div class="container">
+
+        {% comment %}
+	      	If a user has successfully requested a new password, the form.posted_successfully? variable
+	      	is set to true within the 'recover_customer_password' form only. Within that form you'll see
+	      	the variable 'resetPassword' set to true resetPasswordSuccess().
+	    {% endcomment %}
+	    <div class="row">
+	    	<div class="col-md-6 col-md-offset-3">
+			    <div class="note form-success text-center" id="ResetSuccess" style="display:none;">
+			      {{ 'customer.recover_password.success' | t }}
+			    </div>
+		    </div>
+		</div>
+
+		<div class="row">
+            <div class="col-md-6 col-md-offset-3">
+            	<div id="CustomerLoginForm" class="form-vertical">
+
+			        <h1 class="page-title text-center">{{ 'customer.login.title' | t }}</h1>
+	            	{% form 'customer_login' %}
+	            		{{ form.errors | default_errors }}
+	            		<label for="CustomerEmail" class="hidden-label">{{ 'customer.login.email' | t }}</label>
+				        <input type="email" name="customer[email]" id="CustomerEmail" class="input-full{% if form.errors contains 'email' %} error{% endif %}" placeholder="{{ 'customer.login.email' | t }}" autocorrect="off" autocapitalize="off" autofocus>
+
+				        {% if form.password_needed %}
+				          <label for="CustomerPassword" class="hidden-label">{{ 'customer.login.password' | t }}</label>
+				          <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" placeholder="{{ 'customer.login.password' | t }}">
+				        {% endif %}
+
+				        <div class="btn-group center-btn-group">
+				        	<a href="{{ shop.url }}" class="btn btn-primary">{{ 'customer.login.cancel' | t }}</a>
+					        <input type="submit" class="btn btn-default" value="{{ 'customer.login.sign_in' | t }}">
+					    </div>
+					    {% if form.password_needed %}
+				          	<p class="text-center"><a href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a></p>
+				        {% endif %}
+
+	            	{% endform %}
+	            </div>
+
+            	<div id="RecoverPasswordForm" style="display: none;" class="text-center">
+
+			      	<h1 class="page-title text-center">{{ 'customer.recover_password.title' | t }}</h1>
+			      	<p>{{ 'customer.recover_password.subtext' | t }}</p>
+
+			      	<div class="form-vertical">
+			        	{% form 'recover_customer_password' %}
+
+			          		{{ form.errors | default_errors }}
+
+			          		{% comment %}
+			            		Assign variable to be used after timber.init() is run in theme.liquid
+			          		{% endcomment %}
+			          		{% if form.posted_successfully? %}
+			            		{% assign resetPassword = true %}
+			          		{% endif %}
+
+			          		<input type="email" value="" name="email" id="RecoverEmail" class="input-full" placeholder="{{ 'customer.recover_password.email' | t }}" autocorrect="off" autocapitalize="off">
+
+			          		<div class="btn-group center-btn-group">
+			          			<button type="button" id="HideRecoverPasswordLink" class="btn btn-primary">{{ 'customer.recover_password.cancel' | t }}</button>
+				          		<input type="submit" class="btn btn-default" value="{{ 'customer.recover_password.submit' | t }}">
+				          	</div>
+			        	{% endform %}
+			      	</div>
+
+			      	{% comment %}
+				      	If accounts are set as optional, the following will be shown as an option
+				      	during checkout, not on the default /login page.
+				    {% endcomment %}
+				    {% if shop.checkout.guest_login %}
+				      	<h2>{{ 'customer.login.guest_title' | t }}</h2>
+
+				      	{% form 'guest_login' %}
+				      	<div class="btn-group center-btn-group">
+				        	<input type="submit" class="btn btn-default" value="{{ 'customer.login.guest_continue' | t }}">
+				        </div>
+				      	{% endform %}
+				    {% endif %}
+				    
+			    </div>
+            </div>
+        </div>
+    </div>
+</section>

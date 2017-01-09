@@ -1,0 +1,55 @@
+{% assign list = linklists[settings.sidebar_categories] %} 
+
+<ul id="sidebar-categories"  class="nav-accordion nav-categories">
+  {% for link in list.links %}
+  {% assign child_list_handle = link.title | handleize %}  
+  {% if linklists[child_list_handle].links != blank %}
+  <li class="first-level parent {% if forloop.index == list.links.size %}last{% endif %}">
+    <h3><a href="{{ link.url }}" class="first-level-link"><span>{{ link.title }}</span></a></h3>
+    <div>
+      <ul class="first-level-drop"> 
+        {% for childlink in linklists[child_list_handle].links %}  
+        {% assign grand_child_list_handle = childlink.title | handle %}
+        {% if linklists[grand_child_list_handle].links != blank %} 
+        <li class="second-level parent {% if forloop.index == linklists[child_list_handle].links.size %}last{% endif %}">
+          <h3><a href="{{ childlink.url }}" class="second-level-link"><span>{{ childlink.title }}</span></a></h3>
+          <div>
+            <ul class="second-level-drop">
+              {% for grand_child_link in linklists[grand_child_list_handle].links %}
+              <li class="third-level {% if forloop.index == linklists[grand_child_list_handle].links.size %}last{% endif %}">
+                <a href="{{ grand_child_link.url }}" class="third-level-link">
+                  {{ grand_child_link.title }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+        {% else %}
+        <li class="second-level {% if forloop.index == linklists[child_list_handle].links.size %}last{% endif %}">
+          <a href="{{ childlink.url }}"><span>{{ childlink.title }}</span></a>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </li>
+  {% else %}
+  <li class="first-level {% if forloop.index == list.links.size %}last{% endif %}">
+    <a href="{{ link.url }}" class="first-level-link">{{ link.title }}</a>
+  </li>
+  {% endif %}
+  {% endfor %}
+</ul>
+
+{{ 'jqueryui.min.js' | asset_url | script_tag }}
+
+<script>
+  $(document).ready(function() {
+    $( ".parent" ).accordion({
+      active: false,
+      collapsible: true,
+      autoHeight: false
+    });
+  });
+</script>

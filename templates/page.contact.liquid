@@ -1,0 +1,68 @@
+<!-- /templates/page.contact.liquid -->
+
+{% comment %}
+
+  Be sure to select page.contact as the template from the admin page to have this template take effect.
+
+  For information on adding more fields, visit:
+    - http://docs.shopify.com/support/configuration/store-customization/adding-fields-to-the-liquid-contact-form
+
+{% endcomment %}
+
+{% include 'small-header' %}
+
+<div class="map section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="map-wrapper">
+                    <div id="map" data-lat="{{ settings.map_lat }}" data-long="{{ settings.map_lng }}"></div>
+                    <a href="https://www.google.com/maps/@{{ settings.map_lat }},{{ settings.map_lng }},17z?hl=en" class="directions" target="_blank"><i class="fa fa-location-arrow"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="contact-info no-padding-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>{{ page.title }}</h3>
+
+                {% comment %}
+                  Regular page content goes here.
+                {% endcomment %}
+                {{ page.content }}
+            </div>
+            <div class="col-md-8">
+
+                {% comment %}
+                  Contact form starts here
+                {% endcomment %}
+                <div class="form-vertical">
+                    {% form 'contact' %}
+                        {% if form.posted_successfully? %}
+                        <p class="note form-success">
+                            {{ 'contact.form.post_success' | t }}
+                        </p>
+                        {% endif %}
+
+                        {{ form.errors | default_errors }}
+
+                        {% assign name_attr = 'contact.form.name' | t | handle %}
+                        <input type="text" id="ContactFormName" class="input-full" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+
+                        <input type="email" id="ContactFormEmail" class="input-full" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+
+                        <textarea rows="10" id="ContactFormMessage" class="input-full" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+                        <input type="submit" value="{{ 'contact.form.send' | t }}">
+                    {% endform %}
+                </div>
+
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>

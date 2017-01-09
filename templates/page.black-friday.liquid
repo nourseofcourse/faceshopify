@@ -1,0 +1,34 @@
+<!-- /templates/page-black-friday.liquid -->
+{% assign featured = settings.home_featured_products %}
+
+{% comment %}
+
+  Be sure to select page.black-friday as the template from the admin page to have this template take effect.
+
+{% endcomment %}
+
+<section class="black-friday">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6  hidden-xs">
+        <div class="black-friday-bg"></div>
+      </div>
+      <div class="col-sm-6">
+        <h1>50% OFF</h1>
+        <h2>ALL WATCHES today only.</h2>
+        <a href="#watches" class="bf-btn  bf-btn--header" data-plugin="scrollTo">shop watches</a>
+        <a href="http://www.youtube.com/watch?v=4BDuOTLlUOg" class="bf-btn  bf-btn--header  bf-btn--outline  hidden-sm  js-play-btn">watch video</a>
+      </div>
+      <img src="{{ 'mobile-watches.jpg' | asset_url }}" alt="Black Friday 50% Off Classic Watches" class="hidden-sm  hidden-md  hidden-lg  img-responsive">
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <img src="{{ 'presslogos.jpg' | asset_url }}" class="img-responsive  hidden-xs" style="margin: 25px auto;">
+    </div>
+  </div>
+</div>
+{% include 'home-products' %}
+

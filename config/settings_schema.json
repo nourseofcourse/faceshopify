@@ -1,0 +1,3044 @@
+[
+  {
+    "name": "Theme Color Scheme",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Main Color"
+      },
+      {
+        "type": "color",
+        "id": "main_color",
+        "label": "Select color",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "header",
+        "content": "Basic colors"
+      },
+      {
+        "type": "color",
+        "id": "link_color",
+        "label": "Link color",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "color",
+        "id": "link_color_hover",
+        "label": "Link hover color",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "header",
+        "content": "Navigation Bar"
+      },
+      {
+        "type": "color",
+        "id": "navigation_background",
+        "label": "Navigation bar background",
+        "default": "rgba(255,255,255,0)"
+      },
+      {
+        "type": "header",
+        "content": "Slider Buttons"
+      },
+      {
+        "type": "paragraph",
+        "content": "Default buttons"
+      },
+      {
+        "type": "color",
+        "id": "slider_default_buttons_background",
+        "label": "Default buttons background color",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "color",
+        "id": "slider_default_buttons_color",
+        "label": "Default buttons text color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "paragraph",
+        "content": "Primary buttons"
+      },
+      {
+        "type": "color",
+        "id": "slider_primary_buttons_border",
+        "label": "Primary buttons border color",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "color",
+        "id": "slider_primary_buttons_color",
+        "label": "Primary buttons text color",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "paragraph",
+        "content": "Slider Dots"
+      },
+      {
+        "type": "color",
+        "id": "slider_dots_color",
+        "label": "Slider dots color",
+        "default": "#333333"
+      },
+      {
+        "type": "header",
+        "content": "General Buttons"
+      },
+      {
+        "type": "paragraph",
+        "content": "Default buttons"
+      },
+      {
+        "type": "color",
+        "id": "default_buttons_background",
+        "label": "Default buttons background color",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "color",
+        "id": "default_buttons_color",
+        "label": "Default buttons text color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "paragraph",
+        "content": "Primary buttons"
+      },
+      {
+        "type": "color",
+        "id": "primary_buttons_border",
+        "label": "Primary buttons border color",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "color",
+        "id": "primary_buttons_color",
+        "label": "Primary buttons text color",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "header",
+        "content": "Newsletter"
+      },
+      {
+        "type": "color",
+        "id": "newsletter_background",
+        "label": "Newsletter background color",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "header",
+        "content": "Footer"
+      },
+      {
+        "type": "color",
+        "id": "footer_bg_color",
+        "label": "Footer background color",
+        "default": "#f2f3f5"
+      },
+      {
+        "type": "color",
+        "id": "footer_link_color",
+        "label": "Footer link color",
+        "default": "#979797"
+      },
+      {
+        "type": "color",
+        "id": "footer_social_color",
+        "label": "Footer social color",
+        "default": "#c9c9c9"
+      },
+      {
+        "type": "color",
+        "id": "footer_borders_color",
+        "label": "Footer borders color",
+        "default": "#e8eced"
+      },
+      {
+        "type": "color",
+        "id": "footer_payment_color",
+        "label": "Footer payment icons color",
+        "default": "#c9c9c9"
+      },
+      {
+        "type": "color",
+        "id": "footer_copyright_color",
+        "label": "Footer copyright color",
+        "default": "#bbbbbb"
+      }
+    ]
+  },
+  {
+    "name": "Fonts",
+    "settings": [
+      {
+        "type": "select",
+        "id": "heading_font",
+        "options": [
+          {
+            "value": "Raleway",
+            "label": "-- Default --"
+          },
+          {
+            "value": "Nobile",
+            "label": "Nobile"
+          },
+          {
+            "value": "Playfair+Display",
+            "label": "Playfair Display"
+          },
+          {
+            "value": "Open+Sans",
+            "label": "Open Sans"
+          },
+          {
+            "value": "Roboto",
+            "label": "Roboto"
+          },
+          {
+            "value": "Lora",
+            "label": "Lora"
+          },
+          {
+            "value": "Pt+Sans",
+            "label": "Pt Sans"
+          },
+          {
+            "value": "Arvo",
+            "label": "Arvo"
+          },
+          {
+            "value": "Lato",
+            "label": "Lato"
+          },
+          {
+            "value": "Vollkorn",
+            "label": "Vollkorn"
+          },
+          {
+            "value": "Abril+Fatface",
+            "label": "Abril Fatface"
+          },
+          {
+            "value": "Aller",
+            "label": "Aller"
+          },
+          {
+            "value": "Chunkfive",
+            "label": "Chunkfive"
+          }
+        ],
+        "label": "Choose a font for headings:",
+        "default": "Raleway"
+      },
+      {
+        "type": "select",
+        "id": "body_font",
+        "options": [
+          {
+            "value": "Raleway",
+            "label": "-- Default --"
+          },
+          {
+            "value": "Nobile",
+            "label": "Nobile"
+          },
+          {
+            "value": "Playfair+Display",
+            "label": "Playfair Display"
+          },
+          {
+            "value": "Open+Sans",
+            "label": "Open Sans"
+          },
+          {
+            "value": "Roboto",
+            "label": "Roboto"
+          },
+          {
+            "value": "Lora",
+            "label": "Lora"
+          },
+          {
+            "value": "Pt+Sans",
+            "label": "Pt Sans"
+          },
+          {
+            "value": "Arvo",
+            "label": "Arvo"
+          },
+          {
+            "value": "Lato",
+            "label": "Lato"
+          },
+          {
+            "value": "Vollkorn",
+            "label": "Vollkorn"
+          },
+          {
+            "value": "Abril+Fatface",
+            "label": "Abril Fatface"
+          },
+          {
+            "value": "Aller",
+            "label": "Aller"
+          },
+          {
+            "value": "Chunkfive",
+            "label": "Chunkfive"
+          }
+        ],
+        "label": "Choose a font for body text:",
+        "default": "Raleway"
+      },
+      {
+        "type": "text",
+        "id": "body_font_size",
+        "label": "Body Font Size",
+        "default": "18",
+        "info": "Set font size (no px)"
+      },
+      {
+        "type": "color",
+        "id": "body_color",
+        "label": "Body Text Color",
+        "default": "#8d8d8d"
+      },
+      {
+        "type": "text",
+        "id": "h1_font_size",
+        "label": "H1 Font Size",
+        "default": "42",
+        "info": "Set font size (no px)"
+      },
+      {
+        "type": "color",
+        "id": "h1_color",
+        "label": "H1 Color",
+        "default": "#323237"
+      },
+      {
+        "type": "text",
+        "id": "h2_font_size",
+        "label": "H2 Font Size",
+        "default": "28",
+        "info": "Set font size (no px)"
+      },
+      {
+        "type": "color",
+        "id": "h2_color",
+        "label": "H2 Color",
+        "default": "#323237"
+      },
+      {
+        "type": "text",
+        "id": "h3_font_size",
+        "label": "H3 Font Size",
+        "default": "26",
+        "info": "Set font size (no px)"
+      },
+      {
+        "type": "color",
+        "id": "h3_color",
+        "label": "H3 Color",
+        "default": "#323237"
+      },
+      {
+        "type": "text",
+        "id": "h4_font_size",
+        "label": "H4 Font Size",
+        "default": "18",
+        "info": "Set font size (no px)"
+      },
+      {
+        "type": "color",
+        "id": "h4_color",
+        "label": "H4 Color",
+        "default": "#323237"
+      },
+      {
+        "type": "text",
+        "id": "h5_font_size",
+        "label": "H5 Font Size",
+        "default": "16",
+        "info": "Set font size (no px)"
+      },
+      {
+        "type": "color",
+        "id": "h5_color",
+        "label": "H5 Color",
+        "default": "#323237"
+      },
+      {
+        "type": "text",
+        "id": "h6_font_size",
+        "label": "H6 Font Size",
+        "default": "14",
+        "info": "Set font size (no px)"
+      },
+      {
+        "type": "color",
+        "id": "h6_color",
+        "label": "H6 Color",
+        "default": "#323237"
+      }
+    ]
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "radio",
+        "id": "logo_text_image",
+        "label": "Use text or image",
+        "options": [
+          {
+            "value": "text",
+            "label": "Text"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          }
+        ],
+        "default": "text"
+      },
+      {
+        "type": "text",
+        "id": "logo_text",
+        "label": "Logo text",
+        "default": "Chair"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_logo_dot",
+        "label": "Display logo dot",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "logo.png",
+        "label": "Upload logo image"
+      },
+      {
+        "type": "checkbox",
+        "id": "favicon_enable",
+        "label": "Display favicon?",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "favicon.png",
+        "label": "Upload favicon"
+      }
+    ]
+  },
+  {
+    "name": "Navigation",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "sticky_nav",
+        "label": "Use sticky navigation?",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Products details",
+    "settings": [
+      {
+        "type": "radio",
+        "id": "grid_list_full",
+        "options": [
+          {
+            "value": "grid",
+            "label": "Grid"
+          },
+          {
+            "value": "list",
+            "label": "List"
+          },
+          {
+            "value": "full",
+            "label": "Full"
+          }
+        ],
+        "default": "grid",
+        "label": "List products as grid, list or full width?"
+      },
+      {
+        "type": "radio",
+        "id": "grid_type",
+        "options": [
+          {
+            "value": "overlay",
+            "label": "On hover"
+          },
+          {
+            "value": "under",
+            "label": "Under product image"
+          }
+        ],
+        "default": "overlay",
+        "label": "Display product details on hover or under product image"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_zoom",
+        "default": true,
+        "label": "Enable product image zoom?"
+      },
+      {
+        "type": "text",
+        "id": "tab_description",
+        "default": "Product Description",
+        "label": "Description Tab Title"
+      },
+      {
+        "type": "text",
+        "id": "tab_reviews",
+        "default": "Reviews",
+        "label": "Reviews Tab Title"
+      },
+      {
+        "type": "text",
+        "id": "tab_custom_title",
+        "default": "Custom Content",
+        "label": "Custom Content Tab Title"
+      },
+      {
+        "type": "textarea",
+        "id": "tab_custom_content",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pretium ante a nunc hendrerit, quis lobortis ligula sagittis. Maecenas vel dignissim lectus. Proin in nisl blandit justo auctor auctor. Maecenas et suscipit lacus. Cras ornare lacus et porttitor fringilla. Fusce varius dui id tortor luctus iaculis. Sed ligula est, faucibus ut egestas eget, luctus at lectus. Suspendisse condimentum risus ipsum. Nam nec malesuada lacus, vel rutrum lacus. Etiam efficitur laoreet felis, non laoreet sapien semper et. Aliquam pulvinar mollis erat vel placerat. Aliquam molestie tellus quis est congue maximus. Donec tempus enim quis mauris accumsan, facilisis porttitor mi blandit.",
+        "label": "Custom Content"
+      }
+    ]
+  },
+  {
+    "name": "Home Page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Use banner or slider"
+      },
+      {
+        "type": "radio",
+        "id": "slider_banner",
+        "options": [
+          {
+            "value": "slider",
+            "label": "Slider"
+          },
+          {
+            "value": "banner",
+            "label": "Banner"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Featured Products"
+      },
+      {
+        "type": "text",
+        "id": "home_products_title",
+        "label": "Home products section title:",
+        "default": "Featured products"
+      },
+      {
+        "type": "text",
+        "id": "home_products_subtitle",
+        "label": "Home products section subtitle:",
+        "default": "Our best collection yet"
+      },
+      {
+        "type": "checkbox",
+        "id": "home_products_title_show",
+        "default": true,
+        "label": "Show title?"
+      },
+      {
+        "type": "collection",
+        "id": "home_featured_products"
+      },
+      {
+        "type": "select",
+        "id": "home_featured_products_row_num",
+        "label": "Number of rows",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Blog"
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show",
+        "default": true,
+        "label": "Show blog?"
+      },
+      {
+        "type": "blog",
+        "id": "home_blog",
+        "label": "Choose blog:"
+      },
+      {
+        "type": "text",
+        "id": "home_blog_article_title",
+        "label": "Home blog section title:",
+        "default": "From our blog"
+      },
+      {
+        "type": "text",
+        "id": "home_blog_article_subtitle",
+        "label": "Home blog section subtitle:",
+        "default": "The latest Chair news"
+      },
+      {
+        "type": "checkbox",
+        "id": "home_blog_title_show",
+        "default": true,
+        "label": "Show title?"
+      }
+    ]
+  },
+  {
+    "name": "Home Featured Zones",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Featured section 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "featured1_show",
+        "default": true,
+        "label": "Display first featured section?",
+        "info": "Under action bar"
+      },
+      {
+        "type": "image",
+        "id": "featured1.jpg",
+        "label": "First zone background"
+      },
+      {
+        "type": "text",
+        "id": "featured1_title",
+        "default": "Editing featured zones",
+        "label": "First zone title"
+      },
+      {
+        "type": "color",
+        "id": "featured1_title_color",
+        "label": "Title Color",
+        "default": "#323237"
+      },
+      {
+        "type": "textarea",
+        "id": "featured1_description",
+        "default": "To edit this zone go to your admin, click on Online store, Themes then click Customize theme and go to Home Featured Zones",
+        "label": "First zone description"
+      },
+      {
+        "type": "color",
+        "id": "featured1_description_color",
+        "label": "Description Color",
+        "default": "#8d8d8d"
+      },
+      {
+        "type": "text",
+        "id": "featured1_btn_text",
+        "default": "Shop now",
+        "label": "First zone button text"
+      },
+      {
+        "type": "text",
+        "id": "featured1_btn_link",
+        "default": "#",
+        "label": "First zone button link"
+      },
+      {
+        "type": "color",
+        "id": "featured1_btn_border_color",
+        "label": "Button border color",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "color",
+        "id": "featured1_btn_text_color",
+        "label": "Button text color",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "header",
+        "content": "Featured section 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "featured2_show",
+        "default": true,
+        "label": "Display second featured section?",
+        "info": "Under products section"
+      },
+      {
+        "type": "image",
+        "id": "featured2.jpg",
+        "label": "Second zone background"
+      },
+      {
+        "type": "text",
+        "id": "featured2_title",
+        "default": "Editing featured zones",
+        "label": "Second zone title"
+      },
+      {
+        "type": "color",
+        "id": "featured2_title_color",
+        "label": "Title Color",
+        "default": "#323237"
+      },
+      {
+        "type": "textarea",
+        "id": "featured2_description",
+        "default": "To edit this zone go to your admin, click on Online store, Themes then click Customize theme and go to Home Featured Zones",
+        "label": "Second zone description"
+      },
+      {
+        "type": "color",
+        "id": "featured2_description_color",
+        "label": "Description Color",
+        "default": "#8d8d8d"
+      },
+      {
+        "type": "text",
+        "id": "featured2_btn_text",
+        "default": "Shop now",
+        "label": "Second zone button text"
+      },
+      {
+        "type": "text",
+        "id": "featured2_btn_link",
+        "default": "#",
+        "label": "Second zone button link"
+      },
+      {
+        "type": "color",
+        "id": "featured2_btn_border_color",
+        "label": "Button border color",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "color",
+        "id": "featured2_btn_text_color",
+        "label": "Button text color",
+        "default": "#e74c3c"
+      }
+    ]
+  },
+  {
+    "name": "Homepage Collections",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Collections"
+      },
+      {
+        "type": "checkbox",
+        "id": "featuredcollections_show",
+        "default": true,
+        "label": "Display Featured Collections?"
+      },
+      {
+        "type": "header",
+        "content": "Collection 1"
+      },
+      {
+        "type": "image",
+        "id": "collection1.jpg",
+        "label": "Upload image"
+      },
+      {
+        "type": "text",
+        "id": "collection1_title",
+        "default": "New Style",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "collection1_link",
+        "default": "\/collections\/chairs",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Collection 2"
+      },
+      {
+        "type": "image",
+        "id": "collection2.jpg",
+        "label": "Upload image"
+      },
+      {
+        "type": "text",
+        "id": "collection2_title",
+        "default": "On sale",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "collection2_link",
+        "default": "\/collections\/sofas",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Collection 3"
+      },
+      {
+        "type": "image",
+        "id": "collection3.jpg",
+        "label": "Upload image"
+      },
+      {
+        "type": "text",
+        "id": "collection3_title",
+        "default": "In Stores",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "collection3_link",
+        "default": "\/collections\/accessories",
+        "label": "Link"
+      }
+    ]
+  },
+  {
+    "name": "Homepage Action Bar",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Action Bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "actionbar_show",
+        "default": true,
+        "label": "Display Action Bar?",
+        "info": "Under slider or banner"
+      },
+      {
+        "type": "select",
+        "id": "button_1_icon",
+        "options": [
+          {
+            "value": "a",
+            "label": "Accelerator"
+          },
+          {
+            "value": "b",
+            "label": "Alarm"
+          },
+          {
+            "value": "c",
+            "label": "Anchor"
+          },
+          {
+            "value": "d",
+            "label": "Anticlockwise"
+          },
+          {
+            "value": "e",
+            "label": "Archive"
+          },
+          {
+            "value": "f",
+            "label": "Archive full"
+          },
+          {
+            "value": "g",
+            "label": "Ban"
+          },
+          {
+            "value": "h",
+            "label": "Battery charge"
+          },
+          {
+            "value": "i",
+            "label": "Battery empty"
+          },
+          {
+            "value": "j",
+            "label": "Battery full"
+          },
+          {
+            "value": "k",
+            "label": "Battery half"
+          },
+          {
+            "value": "l",
+            "label": "Bolt"
+          },
+          {
+            "value": "m",
+            "label": "Book"
+          },
+          {
+            "value": "n",
+            "label": "Book pen"
+          },
+          {
+            "value": "o",
+            "label": "Book pencil"
+          },
+          {
+            "value": "p",
+            "label": "Bookmark"
+          },
+          {
+            "value": "q",
+            "label": "Calculator"
+          },
+          {
+            "value": "r",
+            "label": "Calendar"
+          },
+          {
+            "value": "s",
+            "label": "Cards diamonds"
+          },
+          {
+            "value": "t",
+            "label": "Cards hearts"
+          },
+          {
+            "value": "u",
+            "label": "Case"
+          },
+          {
+            "value": "v",
+            "label": "Chronometer"
+          },
+          {
+            "value": "w",
+            "label": "Clessidre"
+          },
+          {
+            "value": "x",
+            "label": "Clock"
+          },
+          {
+            "value": "y",
+            "label": "Clockwise"
+          },
+          {
+            "value": "z",
+            "label": "Cloud"
+          },
+          {
+            "value": "A",
+            "label": "Clubs"
+          },
+          {
+            "value": "B",
+            "label": "Compass"
+          },
+          {
+            "value": "C",
+            "label": "Cup"
+          },
+          {
+            "value": "D",
+            "label": "Diamonds"
+          },
+          {
+            "value": "E",
+            "label": "Display"
+          },
+          {
+            "value": "F",
+            "label": "Download"
+          },
+          {
+            "value": "G",
+            "label": "Exclamation"
+          },
+          {
+            "value": "H",
+            "label": "Eye"
+          },
+          {
+            "value": "I",
+            "label": "Eye closed"
+          },
+          {
+            "value": "J",
+            "label": "Female"
+          },
+          {
+            "value": "K",
+            "label": "Flag1"
+          },
+          {
+            "value": "L",
+            "label": "Flag2"
+          },
+          {
+            "value": "M",
+            "label": "Floppydisk"
+          },
+          {
+            "value": "N",
+            "label": "Folder"
+          },
+          {
+            "value": "O",
+            "label": "Folder multiple"
+          },
+          {
+            "value": "P",
+            "label": "Gear"
+          },
+          {
+            "value": "Q",
+            "label": "Geolocalize-01"
+          },
+          {
+            "value": "R",
+            "label": "Geolocalize-05"
+          },
+          {
+            "value": "S",
+            "label": "Globe"
+          },
+          {
+            "value": "T",
+            "label": "Gunsight"
+          },
+          {
+            "value": "U",
+            "label": "Hammer"
+          },
+          {
+            "value": "V",
+            "label": "Headset"
+          },
+          {
+            "value": "W",
+            "label": "Heart"
+          },
+          {
+            "value": "X",
+            "label": "Heart broken"
+          },
+          {
+            "value": "Y",
+            "label": "Helm"
+          },
+          {
+            "value": "Z",
+            "label": "Home"
+          },
+          {
+            "value": "0",
+            "label": "Info"
+          },
+          {
+            "value": "1",
+            "label": "Ipod"
+          },
+          {
+            "value": "2",
+            "label": "Joypad"
+          },
+          {
+            "value": "3",
+            "label": "Key"
+          },
+          {
+            "value": "4",
+            "label": "Keyboard"
+          },
+          {
+            "value": "5",
+            "label": "Laptop"
+          },
+          {
+            "value": "6",
+            "label": "Life buoy"
+          },
+          {
+            "value": "7",
+            "label": "Lightbulb"
+          },
+          {
+            "value": "8",
+            "label": "Link"
+          },
+          {
+            "value": "9",
+            "label": "Lock"
+          },
+          {
+            "value": "!",
+            "label": "Lock open"
+          },
+          {
+            "value": "#",
+            "label": "Magnifier"
+          },
+          {
+            "value": "$",
+            "label": "Magnifier minus"
+          },
+          {
+            "value": "%",
+            "label": "Magnifier plus"
+          },
+          {
+            "value": "&",
+            "label": "Mail"
+          },
+          {
+            "value": "'",
+            "label": "Mail multiple"
+          },
+          {
+            "value": "(",
+            "label": "Mail open"
+          },
+          {
+            "value": ")",
+            "label": "Mail open text"
+          },
+          {
+            "value": "*",
+            "label": "Male"
+          },
+          {
+            "value": "+",
+            "label": "Map"
+          },
+          {
+            "value": ",",
+            "label": "Message"
+          },
+          {
+            "value": "-",
+            "label": "Message multiple"
+          },
+          {
+            "value": ".",
+            "label": "Message txt"
+          },
+          {
+            "value": "\/",
+            "label": "Mixer2"
+          },
+          {
+            "value": ":",
+            "label": "Mouse"
+          },
+          {
+            "value": ";",
+            "label": "Notebook"
+          },
+          {
+            "value": "<",
+            "label": "Notebook pen"
+          },
+          {
+            "value": "=",
+            "label": "Notebook pencil"
+          },
+          {
+            "value": ">",
+            "label": "Paperplane"
+          },
+          {
+            "value": "?",
+            "label": "Pencil ruler"
+          },
+          {
+            "value": "@",
+            "label": "Pencil ruler pen"
+          },
+          {
+            "value": "[",
+            "label": "Photo"
+          },
+          {
+            "value": "]",
+            "label": "Picture"
+          },
+          {
+            "value": "^",
+            "label": "Picture multiple"
+          },
+          {
+            "value": "_",
+            "label": "Pin1"
+          },
+          {
+            "value": "{",
+            "label": "Postcard"
+          },
+          {
+            "value": "|",
+            "label": "Postcard multiple"
+          },
+          {
+            "value": "}",
+            "label": "Printer"
+          },
+          {
+            "value": "\\",
+            "label": "Rss"
+          }
+        ],
+        "label": "First button icon"
+      },
+      {
+        "type": "text",
+        "id": "button_1_text",
+        "default": "Fast delivery",
+        "label": "First button text"
+      },
+      {
+        "type": "text",
+        "id": "button_1_link",
+        "default": "#",
+        "label": "First button link"
+      },
+      {
+        "type": "select",
+        "id": "button_2_icon",
+        "options": [
+          {
+            "value": "a",
+            "label": "Accelerator"
+          },
+          {
+            "value": "b",
+            "label": "Alarm"
+          },
+          {
+            "value": "c",
+            "label": "Anchor"
+          },
+          {
+            "value": "d",
+            "label": "Anticlockwise"
+          },
+          {
+            "value": "e",
+            "label": "Archive"
+          },
+          {
+            "value": "f",
+            "label": "Archive full"
+          },
+          {
+            "value": "g",
+            "label": "Ban"
+          },
+          {
+            "value": "h",
+            "label": "Battery charge"
+          },
+          {
+            "value": "i",
+            "label": "Battery empty"
+          },
+          {
+            "value": "j",
+            "label": "Battery full"
+          },
+          {
+            "value": "k",
+            "label": "Battery half"
+          },
+          {
+            "value": "l",
+            "label": "Bolt"
+          },
+          {
+            "value": "m",
+            "label": "Book"
+          },
+          {
+            "value": "n",
+            "label": "Book pen"
+          },
+          {
+            "value": "o",
+            "label": "Book pencil"
+          },
+          {
+            "value": "p",
+            "label": "Bookmark"
+          },
+          {
+            "value": "q",
+            "label": "Calculator"
+          },
+          {
+            "value": "r",
+            "label": "Calendar"
+          },
+          {
+            "value": "s",
+            "label": "Cards diamonds"
+          },
+          {
+            "value": "t",
+            "label": "Cards hearts"
+          },
+          {
+            "value": "u",
+            "label": "Case"
+          },
+          {
+            "value": "v",
+            "label": "Chronometer"
+          },
+          {
+            "value": "w",
+            "label": "Clessidre"
+          },
+          {
+            "value": "x",
+            "label": "Clock"
+          },
+          {
+            "value": "y",
+            "label": "Clockwise"
+          },
+          {
+            "value": "z",
+            "label": "Cloud"
+          },
+          {
+            "value": "A",
+            "label": "Clubs"
+          },
+          {
+            "value": "B",
+            "label": "Compass"
+          },
+          {
+            "value": "C",
+            "label": "Cup"
+          },
+          {
+            "value": "D",
+            "label": "Diamonds"
+          },
+          {
+            "value": "E",
+            "label": "Display"
+          },
+          {
+            "value": "F",
+            "label": "Download"
+          },
+          {
+            "value": "G",
+            "label": "Exclamation"
+          },
+          {
+            "value": "H",
+            "label": "Eye"
+          },
+          {
+            "value": "I",
+            "label": "Eye closed"
+          },
+          {
+            "value": "J",
+            "label": "Female"
+          },
+          {
+            "value": "K",
+            "label": "Flag1"
+          },
+          {
+            "value": "L",
+            "label": "Flag2"
+          },
+          {
+            "value": "M",
+            "label": "Floppydisk"
+          },
+          {
+            "value": "N",
+            "label": "Folder"
+          },
+          {
+            "value": "O",
+            "label": "Folder multiple"
+          },
+          {
+            "value": "P",
+            "label": "Gear"
+          },
+          {
+            "value": "Q",
+            "label": "Geolocalize-01"
+          },
+          {
+            "value": "R",
+            "label": "Geolocalize-05"
+          },
+          {
+            "value": "S",
+            "label": "Globe"
+          },
+          {
+            "value": "T",
+            "label": "Gunsight"
+          },
+          {
+            "value": "U",
+            "label": "Hammer"
+          },
+          {
+            "value": "V",
+            "label": "Headset"
+          },
+          {
+            "value": "W",
+            "label": "Heart"
+          },
+          {
+            "value": "X",
+            "label": "Heart broken"
+          },
+          {
+            "value": "Y",
+            "label": "Helm"
+          },
+          {
+            "value": "Z",
+            "label": "Home"
+          },
+          {
+            "value": "0",
+            "label": "Info"
+          },
+          {
+            "value": "1",
+            "label": "Ipod"
+          },
+          {
+            "value": "2",
+            "label": "Joypad"
+          },
+          {
+            "value": "3",
+            "label": "Key"
+          },
+          {
+            "value": "4",
+            "label": "Keyboard"
+          },
+          {
+            "value": "5",
+            "label": "Laptop"
+          },
+          {
+            "value": "6",
+            "label": "Life buoy"
+          },
+          {
+            "value": "7",
+            "label": "Lightbulb"
+          },
+          {
+            "value": "8",
+            "label": "Link"
+          },
+          {
+            "value": "9",
+            "label": "Lock"
+          },
+          {
+            "value": "!",
+            "label": "Lock open"
+          },
+          {
+            "value": "#",
+            "label": "Magnifier"
+          },
+          {
+            "value": "$",
+            "label": "Magnifier minus"
+          },
+          {
+            "value": "%",
+            "label": "Magnifier plus"
+          },
+          {
+            "value": "&",
+            "label": "Mail"
+          },
+          {
+            "value": "'",
+            "label": "Mail multiple"
+          },
+          {
+            "value": "(",
+            "label": "Mail open"
+          },
+          {
+            "value": ")",
+            "label": "Mail open text"
+          },
+          {
+            "value": "*",
+            "label": "Male"
+          },
+          {
+            "value": "+",
+            "label": "Map"
+          },
+          {
+            "value": ",",
+            "label": "Message"
+          },
+          {
+            "value": "-",
+            "label": "Message multiple"
+          },
+          {
+            "value": ".",
+            "label": "Message txt"
+          },
+          {
+            "value": "\/",
+            "label": "Mixer2"
+          },
+          {
+            "value": ":",
+            "label": "Mouse"
+          },
+          {
+            "value": ";",
+            "label": "Notebook"
+          },
+          {
+            "value": "<",
+            "label": "Notebook pen"
+          },
+          {
+            "value": "=",
+            "label": "Notebook pencil"
+          },
+          {
+            "value": ">",
+            "label": "Paperplane"
+          },
+          {
+            "value": "?",
+            "label": "Pencil ruler"
+          },
+          {
+            "value": "@",
+            "label": "Pencil ruler pen"
+          },
+          {
+            "value": "[",
+            "label": "Photo"
+          },
+          {
+            "value": "]",
+            "label": "Picture"
+          },
+          {
+            "value": "^",
+            "label": "Picture multiple"
+          },
+          {
+            "value": "_",
+            "label": "Pin1"
+          },
+          {
+            "value": "{",
+            "label": "Postcard"
+          },
+          {
+            "value": "|",
+            "label": "Postcard multiple"
+          },
+          {
+            "value": "}",
+            "label": "Printer"
+          },
+          {
+            "value": "\\",
+            "label": "Rss"
+          }
+        ],
+        "label": "Second button icon"
+      },
+      {
+        "type": "text",
+        "id": "button_2_text",
+        "default": "Adjustable",
+        "label": "Second button text"
+      },
+      {
+        "type": "text",
+        "id": "button_2_link",
+        "default": "#",
+        "label": "Second button link"
+      },
+      {
+        "type": "select",
+        "id": "button_3_icon",
+        "options": [
+          {
+            "value": "a",
+            "label": "Accelerator"
+          },
+          {
+            "value": "b",
+            "label": "Alarm"
+          },
+          {
+            "value": "c",
+            "label": "Anchor"
+          },
+          {
+            "value": "d",
+            "label": "Anticlockwise"
+          },
+          {
+            "value": "e",
+            "label": "Archive"
+          },
+          {
+            "value": "f",
+            "label": "Archive full"
+          },
+          {
+            "value": "g",
+            "label": "Ban"
+          },
+          {
+            "value": "h",
+            "label": "Battery charge"
+          },
+          {
+            "value": "i",
+            "label": "Battery empty"
+          },
+          {
+            "value": "j",
+            "label": "Battery full"
+          },
+          {
+            "value": "k",
+            "label": "Battery half"
+          },
+          {
+            "value": "l",
+            "label": "Bolt"
+          },
+          {
+            "value": "m",
+            "label": "Book"
+          },
+          {
+            "value": "n",
+            "label": "Book pen"
+          },
+          {
+            "value": "o",
+            "label": "Book pencil"
+          },
+          {
+            "value": "p",
+            "label": "Bookmark"
+          },
+          {
+            "value": "q",
+            "label": "Calculator"
+          },
+          {
+            "value": "r",
+            "label": "Calendar"
+          },
+          {
+            "value": "s",
+            "label": "Cards diamonds"
+          },
+          {
+            "value": "t",
+            "label": "Cards hearts"
+          },
+          {
+            "value": "u",
+            "label": "Case"
+          },
+          {
+            "value": "v",
+            "label": "Chronometer"
+          },
+          {
+            "value": "w",
+            "label": "Clessidre"
+          },
+          {
+            "value": "x",
+            "label": "Clock"
+          },
+          {
+            "value": "y",
+            "label": "Clockwise"
+          },
+          {
+            "value": "z",
+            "label": "Cloud"
+          },
+          {
+            "value": "A",
+            "label": "Clubs"
+          },
+          {
+            "value": "B",
+            "label": "Compass"
+          },
+          {
+            "value": "C",
+            "label": "Cup"
+          },
+          {
+            "value": "D",
+            "label": "Diamonds"
+          },
+          {
+            "value": "E",
+            "label": "Display"
+          },
+          {
+            "value": "F",
+            "label": "Download"
+          },
+          {
+            "value": "G",
+            "label": "Exclamation"
+          },
+          {
+            "value": "H",
+            "label": "Eye"
+          },
+          {
+            "value": "I",
+            "label": "Eye closed"
+          },
+          {
+            "value": "J",
+            "label": "Female"
+          },
+          {
+            "value": "K",
+            "label": "Flag1"
+          },
+          {
+            "value": "L",
+            "label": "Flag2"
+          },
+          {
+            "value": "M",
+            "label": "Floppydisk"
+          },
+          {
+            "value": "N",
+            "label": "Folder"
+          },
+          {
+            "value": "O",
+            "label": "Folder multiple"
+          },
+          {
+            "value": "P",
+            "label": "Gear"
+          },
+          {
+            "value": "Q",
+            "label": "Geolocalize-01"
+          },
+          {
+            "value": "R",
+            "label": "Geolocalize-05"
+          },
+          {
+            "value": "S",
+            "label": "Globe"
+          },
+          {
+            "value": "T",
+            "label": "Gunsight"
+          },
+          {
+            "value": "U",
+            "label": "Hammer"
+          },
+          {
+            "value": "V",
+            "label": "Headset"
+          },
+          {
+            "value": "W",
+            "label": "Heart"
+          },
+          {
+            "value": "X",
+            "label": "Heart broken"
+          },
+          {
+            "value": "Y",
+            "label": "Helm"
+          },
+          {
+            "value": "Z",
+            "label": "Home"
+          },
+          {
+            "value": "0",
+            "label": "Info"
+          },
+          {
+            "value": "1",
+            "label": "Ipod"
+          },
+          {
+            "value": "2",
+            "label": "Joypad"
+          },
+          {
+            "value": "3",
+            "label": "Key"
+          },
+          {
+            "value": "4",
+            "label": "Keyboard"
+          },
+          {
+            "value": "5",
+            "label": "Laptop"
+          },
+          {
+            "value": "6",
+            "label": "Life buoy"
+          },
+          {
+            "value": "7",
+            "label": "Lightbulb"
+          },
+          {
+            "value": "8",
+            "label": "Link"
+          },
+          {
+            "value": "9",
+            "label": "Lock"
+          },
+          {
+            "value": "!",
+            "label": "Lock open"
+          },
+          {
+            "value": "#",
+            "label": "Magnifier"
+          },
+          {
+            "value": "$",
+            "label": "Magnifier minus"
+          },
+          {
+            "value": "%",
+            "label": "Magnifier plus"
+          },
+          {
+            "value": "&",
+            "label": "Mail"
+          },
+          {
+            "value": "'",
+            "label": "Mail multiple"
+          },
+          {
+            "value": "(",
+            "label": "Mail open"
+          },
+          {
+            "value": ")",
+            "label": "Mail open text"
+          },
+          {
+            "value": "*",
+            "label": "Male"
+          },
+          {
+            "value": "+",
+            "label": "Map"
+          },
+          {
+            "value": ",",
+            "label": "Message"
+          },
+          {
+            "value": "-",
+            "label": "Message multiple"
+          },
+          {
+            "value": ".",
+            "label": "Message txt"
+          },
+          {
+            "value": "\/",
+            "label": "Mixer2"
+          },
+          {
+            "value": ":",
+            "label": "Mouse"
+          },
+          {
+            "value": ";",
+            "label": "Notebook"
+          },
+          {
+            "value": "<",
+            "label": "Notebook pen"
+          },
+          {
+            "value": "=",
+            "label": "Notebook pencil"
+          },
+          {
+            "value": ">",
+            "label": "Paperplane"
+          },
+          {
+            "value": "?",
+            "label": "Pencil ruler"
+          },
+          {
+            "value": "@",
+            "label": "Pencil ruler pen"
+          },
+          {
+            "value": "[",
+            "label": "Photo"
+          },
+          {
+            "value": "]",
+            "label": "Picture"
+          },
+          {
+            "value": "^",
+            "label": "Picture multiple"
+          },
+          {
+            "value": "_",
+            "label": "Pin1"
+          },
+          {
+            "value": "{",
+            "label": "Postcard"
+          },
+          {
+            "value": "|",
+            "label": "Postcard multiple"
+          },
+          {
+            "value": "}",
+            "label": "Printer"
+          },
+          {
+            "value": "\\",
+            "label": "Rss"
+          }
+        ],
+        "label": "Third button icon"
+      },
+      {
+        "type": "text",
+        "id": "button_3_text",
+        "default": "Inovative",
+        "label": "Third button text"
+      },
+      {
+        "type": "text",
+        "id": "button_3_link",
+        "default": "#",
+        "label": "Third button link"
+      }
+    ]
+  },
+  {
+    "name": "Banner",
+    "settings": [
+      {
+        "type": "image",
+        "id": "banner.jpg",
+        "label": "Upload banner image:"
+      },
+      {
+        "type": "radio",
+        "id": "banner_caption_position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "label": "Banner text position"
+      },
+      {
+        "type": "text",
+        "id": "banner_title",
+        "default": "Editing the banner",
+        "label": "Banner title"
+      },
+      {
+        "type": "textarea",
+        "id": "banner_description",
+        "default": "To edit the banner go to your admin, click on Online store, Themes then click Customize theme and go to Banner",
+        "label": "Banner description"
+      },
+      {
+        "type": "checkbox",
+        "id": "banner_show_first_btn",
+        "default": true,
+        "label": "Display first button?"
+      },
+      {
+        "type": "text",
+        "id": "banner_first_btn_text",
+        "default": "Purchase",
+        "label": "First button text"
+      },
+      {
+        "type": "text",
+        "id": "banner_first_btn_link",
+        "default": "#",
+        "label": "First button link"
+      },
+      {
+        "type": "checkbox",
+        "id": "banner_show_second_btn",
+        "default": true,
+        "label": "Display second button?"
+      },
+      {
+        "type": "text",
+        "id": "banner_second_btn_text",
+        "default": "Purchase",
+        "label": "Second button text"
+      },
+      {
+        "type": "text",
+        "id": "banner_second_btn_link",
+        "default": "#",
+        "label": "Second button link"
+      }
+    ]
+  },
+  {
+    "name": "Slider",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Side 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide_1_show",
+        "default": false,
+        "label": "Display slide?"
+      },
+      {
+        "type": "image",
+        "id": "slide_1.jpg",
+        "label": "Upload image:"
+      },
+      {
+        "type": "text",
+        "id": "slide_1_title",
+        "default": "Demo title",
+        "label": "Slide 1 title"
+      },
+      {
+        "type": "color",
+        "id": "slide_1_title_color",
+        "label": "Title color",
+        "default": "#323237"
+      },
+      {
+        "type": "textarea",
+        "id": "slide_1_description",
+        "default": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates depudiandae sint et molestiae.",
+        "label": "Slide 1 description"
+      },
+      {
+        "type": "color",
+        "id": "slide_1_description_color",
+        "label": "Description color",
+        "default": "#8d8d8d"
+      },
+      {
+        "type": "radio",
+        "id": "slide_1_text_align",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left",
+        "label": "Text align left or right"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide_1_show_first_btn",
+        "default": true,
+        "label": "Display first button?"
+      },
+      {
+        "type": "text",
+        "id": "slide_1_first_btn_text",
+        "default": "Purchase",
+        "label": "First button text"
+      },
+      {
+        "type": "text",
+        "id": "slide_1_first_btn_link",
+        "default": "#",
+        "label": "First button link"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide_1_show_second_btn",
+        "default": true,
+        "label": "Display second button?"
+      },
+      {
+        "type": "text",
+        "id": "slide_1_second_btn_text",
+        "default": "Purchase",
+        "label": "Second button text"
+      },
+      {
+        "type": "text",
+        "id": "slide_1_second_btn_link",
+        "default": "#",
+        "label": "Second button link"
+      },
+      {
+        "type": "header",
+        "content": "Side 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide_2_show",
+        "default": false,
+        "label": "Display slide?"
+      },
+      {
+        "type": "image",
+        "id": "slide_2.jpg",
+        "label": "Upload image:"
+      },
+      {
+        "type": "text",
+        "id": "slide_2_title",
+        "default": "Demo title",
+        "label": "Slide 1 title"
+      },
+      {
+        "type": "color",
+        "id": "slide_2_title_color",
+        "label": "Title color",
+        "default": "#323237"
+      },
+      {
+        "type": "textarea",
+        "id": "slide_2_description",
+        "default": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates depudiandae sint et molestiae.",
+        "label": "Slide 2 description"
+      },
+      {
+        "type": "color",
+        "id": "slide_2_description_color",
+        "label": "Description color",
+        "default": "#8d8d8d"
+      },
+      {
+        "type": "radio",
+        "id": "slide_2_text_align",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left",
+        "label": "Text align left or right"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide_2_show_first_btn",
+        "default": true,
+        "label": "Display first button?"
+      },
+      {
+        "type": "text",
+        "id": "slide_2_first_btn_text",
+        "default": "Purchase",
+        "label": "First button text"
+      },
+      {
+        "type": "text",
+        "id": "slide_2_first_btn_link",
+        "default": "#",
+        "label": "First button link"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide_2_show_second_btn",
+        "default": true,
+        "label": "Display second button?"
+      },
+      {
+        "type": "text",
+        "id": "slide_2_second_btn_text",
+        "default": "Purchase",
+        "label": "Second button text"
+      },
+      {
+        "type": "text",
+        "id": "slide_2_second_btn_link",
+        "default": "#",
+        "label": "Second button link"
+      },
+      {
+        "type": "header",
+        "content": "Side 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide_3_show",
+        "default": false,
+        "label": "Display slide?"
+      },
+      {
+        "type": "image",
+        "id": "slide_3.jpg",
+        "label": "Upload image:"
+      },
+      {
+        "type": "text",
+        "id": "slide_3_title",
+        "default": "Demo title",
+        "label": "Slide 1 title"
+      },
+      {
+        "type": "color",
+        "id": "slide_3_title_color",
+        "label": "Title color",
+        "default": "#323237"
+      },
+      {
+        "type": "textarea",
+        "id": "slide_3_description",
+        "default": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates depudiandae sint et molestiae.",
+        "label": "Slide 3 description"
+      },
+      {
+        "type": "color",
+        "id": "slide_3_description_color",
+        "label": "Description color",
+        "default": "#8d8d8d"
+      },
+      {
+        "type": "radio",
+        "id": "slide_3_text_align",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left",
+        "label": "Text align left or right"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide_3_show_first_btn",
+        "default": true,
+        "label": "Display first button?"
+      },
+      {
+        "type": "text",
+        "id": "slide_3_first_btn_text",
+        "default": "Purchase",
+        "label": "First button text"
+      },
+      {
+        "type": "text",
+        "id": "slide_3_first_btn_link",
+        "default": "#",
+        "label": "First button link"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide_3_show_second_btn",
+        "default": true,
+        "label": "Display second button?"
+      },
+      {
+        "type": "text",
+        "id": "slide_3_second_btn_text",
+        "default": "Purchase",
+        "label": "Second button text"
+      },
+      {
+        "type": "text",
+        "id": "slide_3_second_btn_link",
+        "default": "#",
+        "label": "Second button link"
+      }
+    ]
+  },
+  {
+    "name": "About us",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_about_content",
+        "default": false,
+        "label": "Display about page default content?"
+      },
+      {
+        "type": "image",
+        "id": "about.jpg",
+        "label": "Our office photo"
+      },
+      {
+        "type": "text",
+        "id": "about_office_photo_caption_line1",
+        "label": "About our office photo caption first line",
+        "default": "Our"
+      },
+      {
+        "type": "text",
+        "id": "about_office_photo_caption_line2",
+        "label": "About our office photo caption second line",
+        "default": "Office"
+      },
+      {
+        "type": "text",
+        "id": "about_office_title",
+        "label": "About our office section title",
+        "default": "Our office"
+      },
+      {
+        "type": "text",
+        "id": "about_office_subtitle",
+        "label": "About our office section subtitle",
+        "default": "Beyond a chair"
+      },
+      {
+        "type": "textarea",
+        "id": "about_office_description",
+        "label": "About our office section title",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in dictum tortor. Mauris nisl risus, semper eget maximus in, porttitor eu libero. Curabitur urna dolor, fringilla nec gravida id, scelerisque in ex. Vivamus ac vulputate turpis. Nunc eu diam id risus feugiat lobortis. Aliquam nec sollicitudin turpis. Praesent sed interdum massa."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_office_photo",
+        "default": true,
+        "label": "Display about our office section?"
+      },
+      {
+        "type": "header",
+        "content": "Team Carousel"
+      },
+      {
+        "type": "image",
+        "id": "team1.jpg",
+        "label": "First team member image"
+      },
+      {
+        "type": "text",
+        "id": "team1_year",
+        "label": "First team member join year",
+        "default": "2002"
+      },
+      {
+        "type": "text",
+        "id": "team1_name",
+        "label": "First team member name",
+        "default": "Sandra Smith"
+      },
+      {
+        "type": "text",
+        "id": "team1_position",
+        "label": "First team member position",
+        "default": "Founder & CEO"
+      },
+      {
+        "type": "textarea",
+        "id": "team1_description",
+        "label": "First team member description",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in dictum tortor. Mauris nisl risus, semper eget maximus in, porttitor eu libero. Curabitur urna dolor, fringilla nec gravida id, scelerisque in ex. Vivamus ac vulputate turpis. Nunc eu diam id risus feugiat lobortis. Aliquam nec sollicitudin turpis. Praesent sed interdum massa."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_team1",
+        "default": true,
+        "label": "Display first team member?"
+      },
+      {
+        "type": "image",
+        "id": "team2.jpg",
+        "label": "Second team member image"
+      },
+      {
+        "type": "text",
+        "id": "team2_year",
+        "label": "Second team member join year",
+        "default": "2004"
+      },
+      {
+        "type": "text",
+        "id": "team2_name",
+        "label": "Second team member name",
+        "default": "John Doe"
+      },
+      {
+        "type": "text",
+        "id": "team2_position",
+        "label": "Second team member position",
+        "default": "Designer"
+      },
+      {
+        "type": "textarea",
+        "id": "team2_description",
+        "label": "Second team member description",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in dictum tortor. Mauris nisl risus, semper eget maximus in, porttitor eu libero. Curabitur urna dolor, fringilla nec gravida id, scelerisque in ex. Vivamus ac vulputate turpis. Nunc eu diam id risus feugiat lobortis. Aliquam nec sollicitudin turpis. Praesent sed interdum massa."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_team2",
+        "default": true,
+        "label": "Display second team member?"
+      },
+      {
+        "type": "image",
+        "id": "team3.jpg",
+        "label": "Third team member image"
+      },
+      {
+        "type": "text",
+        "id": "team3_year",
+        "label": "Third team member join year",
+        "default": "2006"
+      },
+      {
+        "type": "text",
+        "id": "team3_name",
+        "label": "Third team member name",
+        "default": "Robert McCane"
+      },
+      {
+        "type": "text",
+        "id": "team3_position",
+        "label": "Third team member position",
+        "default": "Developer"
+      },
+      {
+        "type": "textarea",
+        "id": "team3_description",
+        "label": "Third team member description",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in dictum tortor. Mauris nisl risus, semper eget maximus in, porttitor eu libero. Curabitur urna dolor, fringilla nec gravida id, scelerisque in ex. Vivamus ac vulputate turpis. Nunc eu diam id risus feugiat lobortis. Aliquam nec sollicitudin turpis. Praesent sed interdum massa."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_team3",
+        "default": true,
+        "label": "Display third team member?"
+      },
+      {
+        "type": "image",
+        "id": "team4.jpg",
+        "label": "Fourth team member image"
+      },
+      {
+        "type": "text",
+        "id": "team4_year",
+        "label": "Fourth team member join year",
+        "default": "2010"
+      },
+      {
+        "type": "text",
+        "id": "team4_name",
+        "label": "Fourth team member name",
+        "default": "Maria Doe"
+      },
+      {
+        "type": "text",
+        "id": "team4_position",
+        "label": "Fourth team member position",
+        "default": "Marketing"
+      },
+      {
+        "type": "textarea",
+        "id": "team4_description",
+        "label": "Fourth team member description",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in dictum tortor. Mauris nisl risus, semper eget maximus in, porttitor eu libero. Curabitur urna dolor, fringilla nec gravida id, scelerisque in ex. Vivamus ac vulputate turpis. Nunc eu diam id risus feugiat lobortis. Aliquam nec sollicitudin turpis. Praesent sed interdum massa."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_team4",
+        "default": true,
+        "label": "Display fourth team member?"
+      },
+      {
+        "type": "image",
+        "id": "team5.jpg",
+        "label": "Fifth team member image"
+      },
+      {
+        "type": "text",
+        "id": "team5_year",
+        "label": "Fifth team member join year",
+        "default": "2013"
+      },
+      {
+        "type": "text",
+        "id": "team5_name",
+        "label": "Fifth team member name",
+        "default": "Iulius McGregor"
+      },
+      {
+        "type": "text",
+        "id": "team5_position",
+        "label": "Fifth team member position",
+        "default": "SEM & SEO"
+      },
+      {
+        "type": "textarea",
+        "id": "team5_description",
+        "label": "Fifth team member description",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in dictum tortor. Mauris nisl risus, semper eget maximus in, porttitor eu libero. Curabitur urna dolor, fringilla nec gravida id, scelerisque in ex. Vivamus ac vulputate turpis. Nunc eu diam id risus feugiat lobortis. Aliquam nec sollicitudin turpis. Praesent sed interdum massa."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_team5",
+        "default": true,
+        "label": "Display fifth team member?"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_team_slider",
+        "default": true,
+        "label": "Display team slider?"
+      }
+    ]
+  },
+  {
+    "name": "Contact",
+    "settings": [
+      {
+        "type": "text",
+        "id": "map_lat",
+        "default": "40.695182",
+        "label": "Latitude"
+      },
+      {
+        "type": "text",
+        "id": "map_lng",
+        "default": "-73.896188",
+        "label": "Longitude"
+      }
+    ]
+  },
+  {
+    "name": "Error 404",
+    "settings": [
+      {
+        "type": "image",
+        "id": "404.jpg",
+        "label": "404 page backgound"
+      },
+      {
+        "type": "text",
+        "id": "error_title",
+        "default": "404",
+        "label": "404 page title"
+      },
+      {
+        "type": "textarea",
+        "id": "error_text",
+        "default": "Oh dear, like the page you are looking for is no longer available! Let's get back on track...",
+        "label": "404 page content"
+      },
+      {
+        "type": "checkbox",
+        "id": "error_first_btn_show",
+        "default": true,
+        "label": "Display first button?"
+      },
+      {
+        "type": "text",
+        "id": "error_first_btn_text",
+        "default": "Home",
+        "label": "First button text"
+      },
+      {
+        "type": "text",
+        "id": "error_first_btn_link",
+        "default": "\/",
+        "label": "First button link"
+      },
+      {
+        "type": "checkbox",
+        "id": "error_second_btn_show",
+        "default": true,
+        "label": "Display second button?"
+      },
+      {
+        "type": "text",
+        "id": "error_second_btn_text",
+        "default": "Shop now",
+        "label": "Second button text"
+      },
+      {
+        "type": "text",
+        "id": "error_second_btn_link",
+        "default": "\/collections\/all",
+        "label": "Second button link"
+      }
+    ]
+  },
+  {
+    "name": "Secondary pages background",
+    "settings": [
+      {
+        "type": "image",
+        "id": "secondarybg.jpg",
+        "label": "Secondary pages header background"
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      {
+        "type": "text",
+        "id": "facebook_link",
+        "default": "#",
+        "label": "Facebook link:"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_facebook",
+        "default": true,
+        "label": "Display Facebook Icon?"
+      },
+      {
+        "type": "text",
+        "id": "twitter_link",
+        "default": "#",
+        "label": "Twitter link:"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_twitter",
+        "default": true,
+        "label": "Display Twitter Icon?"
+      },
+      {
+        "type": "text",
+        "id": "google_link",
+        "default": "#",
+        "label": "Google Plus link:"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_google",
+        "default": true,
+        "label": "Display Google Plus Icon?"
+      },
+      {
+        "type": "text",
+        "id": "pinterest_link",
+        "default": "#",
+        "label": "Pinterest link:"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_pinterest",
+        "default": true,
+        "label": "Display Pinterest Icon?"
+      },
+      {
+        "type": "text",
+        "id": "instagram_link",
+        "default": "#",
+        "label": "Instagram link:"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_instagram",
+        "default": true,
+        "label": "Display Instagram Icon?"
+      }
+    ]
+  },
+  {
+    "name": "Instagram feed",
+    "settings": [
+      {
+        "type": "text",
+        "id": "instagram_id",
+        "label": "Instagram user id",
+        "default": "207642893"
+      },
+      {
+        "type": "text",
+        "id": "instagram_access_token",
+        "label": "Instagram access token"
+      },
+      {
+        "type": "select",
+        "id": "instagram_speed",
+        "options": [
+          {
+            "value": "0",
+            "label": "0"
+          },
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ],
+        "label": "Instagram scroll speed",
+        "default": "3"
+      }
+    ]
+  },
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Newsletter"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_newsletter",
+        "default": true,
+        "label": "Show newsletter?"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_form_action",
+        "label": "MailChimp Form Action URL",
+        "info": "[Where do I find my MailChimp form action URL?](http:\/\/docs.shopify.com\/support\/configuration\/store-customization\/where-do-i-get-my-mailchimp-form-action)"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_button_submit",
+        "label": "Button text",
+        "default": "Join now"
+      },
+      {
+        "type": "image",
+        "id": "newsletter.jpg",
+        "label": "Newsletter Background"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_title",
+        "label": "Newsletter section title",
+        "default": "Editing the newsletter"
+      },
+      {
+        "type": "textarea",
+        "id": "newsletter_description",
+        "label": "Newsletter section description",
+        "default": "To edit this zone go to your admin, click on Online store, Themes then click Customize theme and go to Newsletter"
+      }
+    ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "footer_amex",
+        "default": true,
+        "label": "Show American Express Icon?"
+      },
+      {
+        "type": "text",
+        "id": "footer_amex_link",
+        "label": "American Express link"
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_visa",
+        "default": true,
+        "label": "Show Visa Icon?"
+      },
+      {
+        "type": "text",
+        "id": "footer_visa_link",
+        "label": "Visa link"
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_paypal",
+        "default": true,
+        "label": "Show PayPal Icon?"
+      },
+      {
+        "type": "text",
+        "id": "footer_paypal_link",
+        "label": "Amex link"
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_stripe",
+        "default": true,
+        "label": "Show Stripe Icon?"
+      },
+      {
+        "type": "text",
+        "id": "footer_stripe_link",
+        "label": "Stripe link"
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_mastercard",
+        "default": true,
+        "label": "Show Master Card Icon?"
+      },
+      {
+        "type": "text",
+        "id": "footer_mastercard_link",
+        "label": "Mastercard link"
+      },
+      {
+        "type": "text",
+        "id": "footer_copyright",
+        "label": "Footer copyright text:",
+        "default": "Copyright © 2015 Chair. Created by Designifyer.com"
+      }
+    ]
+  },
+  {
+    "name": "Collection page",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "collection_sidebar",
+        "default": true,
+        "label": "Display sorting sidebar?"
+      },
+      {
+        "type": "header",
+        "content": "Siebar sort by"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_sidebar_sort_by",
+        "default": true,
+        "label": "Display sidebar sort by?"
+      },
+      {
+        "type": "text",
+        "id": "collection_sidebar_sort_title",
+        "default": "Sort by",
+        "label": "Sidebar sort by title"
+      },
+      {
+        "type": "header",
+        "content": "Siebar tags"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_sidebar_tags",
+        "default": true,
+        "label": "Display sidebar tags?"
+      },
+      {
+        "type": "text",
+        "id": "collection_sidebar_tags_title",
+        "default": "Tags",
+        "label": "Sidebar tags title"
+      },
+      {
+        "type": "header",
+        "content": "Siebar categories"
+      },
+      {
+        "type": "link_list",
+        "id": "sidebar_categories",
+        "label": "Sidebar menu for categories"
+      },
+      {
+        "type": "text",
+        "id": "sidebar_categories_title",
+        "default": "Categories",
+        "label": "Sidebar categories title"
+      }
+    ]
+  },
+  {
+    "name": "Ajax",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_ajax",
+        "default": true,
+        "label": "Enable ajax Add to Cart?",
+        "info": "If unchecked, this disables off screen cart that slides in when you add a product to cart. User will be taken directly to cart page instead."
+      }
+    ]
+  },
+  {
+    "name": "Cart Page",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Allow notes with orders"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_datepicker",
+        "label": "Display datepicker?",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "delivery_monday",
+        "label": "Allow delivery on Monday?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "delivery_tuesday",
+        "label": "Allow delivery on Tuesday?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "delivery_wednesday",
+        "label": "Allow delivery on Wednesday?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "delivery_thursday",
+        "label": "Allow delivery on Thursday?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "delivery_friday",
+        "label": "Allow delivery on Friday?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "delivery_saturday",
+        "label": "Allow delivery on Saturday?",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "delivery_sunday",
+        "label": "Allow delivery on Sunday?",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "delivery_default_date",
+        "label": "Set the default date for the datepicker",
+        "info": "Must be in this format: mm-dd-yyyy",
+        "placeholder": "mm-dd-yyyy"
+      },
+      {
+        "type": "text",
+        "id": "delivery_min_date",
+        "label": "How many days will take to deliver?",
+        "info": "The number placed here represents the number of disabled days from today. If you place here 2 and today is Friday then Saturday and Sunday will not be available for delivery.",
+        "placeholder": "2"
+      },
+      {
+        "type": "text",
+        "id": "delivery_max_date",
+        "label": "The maximum selectable date in weeks",
+        "info": "Must be a number",
+        "placeholder": "2"
+      }
+    ]
+  }
+]

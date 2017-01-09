@@ -1,0 +1,51 @@
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  	{% assign on_sale = true %}
+{% endif %}
+
+{% comment %}
+  	Check if the product is sold out and set a variable to be used below.
+{% endcomment %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+  	{% assign sold_out = false %}
+{% endif %}
+
+<!-- PRODUCT -->
+<div class="col-md-6 product type-3">
+    <div class="image">
+        <a href="{{ product.url }}"><img src="{{ product.featured_image.src | img_url: 'original' }}" alt="{{ product.product.image.alt }}"></a>
+    	{% if sold_out %}
+          <span class="notify sold">sold</span>
+        {% endif %}
+        {% if on_sale %}
+          <span class="notify sale">sale</span>
+        {% endif %}
+  	</div>
+    <div class="description">
+        <h2 class="text-center title"><a href="{{ product.url }}">{{ product.title }}</a></h2>
+        <h3 class="text-center no-after price">
+      		{% if on_sale %}
+              {% if product.price_varies %}
+                {% assign sale_price = product.price | money %}
+                {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+              {% else %}
+                {{ product.price | money }}
+              {% endif %}
+            {% else %}
+              {% if product.price_varies %}
+                {% assign price = product.price | money %}
+                {{ 'products.general.from_text_html' | t: price: price }}
+              {% else %}
+                {{ product.price | money }}
+              {% endif %}
+            {% endif %}
+            {% if on_sale %}
+              <span class="hidden">{{ 'products.general.regular_price' | t }}</span>
+              <s>{{ product.compare_at_price | money }}</s>
+            {% endif %}
+      	</h3>
+    </div>
+</div>
+<!-- END PRODUCT -->

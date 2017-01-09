@@ -1,0 +1,69 @@
+{% comment %}
+  Template-specific js
+{% endcomment %}
+
+{% if template contains 'customers' %}
+  <script>
+    function resetPasswordSuccess() {
+      $('#ResetSuccess').show();
+    };
+    function getHash() {
+      return window.location.hash;
+    };
+
+    function updateHash(hash) {
+      window.location.hash = '#' + hash;
+      $('#' + hash).attr('tabindex', -1).focus();
+    };
+
+    {% if newHash %}
+      $(function() {
+        updateHash('{{ newHash }}');
+      });
+    {% endif %}
+    {% if resetPassword %}
+      $(function() {
+        resetPasswordSuccess();
+      });
+    {% endif %}
+
+    // Allow deep linking to recover password form
+    if (getHash() == '#recover') {
+      showRecoverPasswordForm();
+    }
+  </script>
+{% endif %}
+
+{% if settings.enable_ajax %}
+<script>
+    $(function($) {
+      ajaxCart.init({
+        formSelector: '.AddToCartForm',
+        cartContainer: '#CartContainer',
+        addToCartSelector: '.AddToCart',
+        cartCountSelector: '',
+        cartCostSelector: '#cart-menu-item a span',
+        moneyFormat: {{ shop.money_format | json }}
+      });
+    }); 
+
+    $('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
+      // Bind to 'ajaxCart.afterCartLoad' to run any javascript after the cart has loaded in the DOM
+      $.sidr('open');
+    });
+</script>
+{% else %}
+<script>
+    $(function($) {
+      ajaxCart.init({
+        formSelector: '.AddToCartForm',
+        cartContainer: '#CartContainer',
+        addToCartSelector: '',
+        cartCountSelector: '',
+        cartCostSelector: '#cart-menu-item a span',
+        moneyFormat: {{ shop.money_format | json }}
+      });
+    }); 
+
+</script>
+{% endif %}

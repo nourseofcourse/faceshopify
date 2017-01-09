@@ -1,0 +1,19 @@
+<!-- /snippets/home-featured2.liquid -->
+
+{% assign featured2_title = settings.featured2_title %}
+{% assign featured2_description = settings.featured2_description %}
+{% assign featured2_btn_text = settings.featured2_btn_text %}
+{% assign featured2_btn_link = settings.featured2_btn_link %}
+
+<section class="hidden-xs  hidden-sm featured-section featured2" style="background: url('{{ 'featured2.jpg' | asset_url }}') no-repeat;    background-position: center -180px;">
+    <div class="on-page overlay" ></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5 col-sm-offset-7 text-right">
+                <h2 class="page-title">{{ settings.featured2_title }}</h2>
+                <p class="description">{{ settings.featured2_description }}</p>
+                <a href="{{ settings.featured2_btn_link }}" class="btn btn-primary">{{ settings.featured2_btn_text }}</a>
+            </div>
+        </div><!--end of row-->
+    </div><!--end of container-->
+</section>

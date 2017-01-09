@@ -1,0 +1,29 @@
+<!-- /snippets/side-cart.liquid -->
+
+<div id="sidr">
+    <ul>	
+      <li class="title"><a href="/cart">{{ 'cart.general.title' | t }}</a></li>
+    </ul>
+
+    <div id="CartContainer"></div>
+
+  	{% comment %}
+    <div class="side-social">
+        {% if settings.show_facebook %}
+          <a href="{{ settings.facebook_link }}"><i class="fa fa-facebook"></i></a>
+        {% endif %}
+        {% if settings.show_twitter %}
+          <a href="{{ settings.twitter_link }}"><i class="fa fa-twitter"></i></a>
+        {% endif %}
+        {% if settings.show_google %}
+          <a href="{{ settings.google_link }}"><i class="fa fa-google-plus"></i></a>
+        {% endif %}
+        {% if settings.show_pinterest %}
+          <a href="{{ settings.pinterest_link }}"><i class="fa fa-pinterest"></i></a>
+        {% endif %}
+        {% if settings.show_instagram %}
+          <a href="{{ settings.instagram_link }}"><i class="fa fa-instagram"></i></a>
+        {% endif %}
+    </div>
+  	{% endcomment %}
+</div>

@@ -1,0 +1,41 @@
+<!-- /snippets/blog-sidebar.liquid -->
+{% comment %}
+  Recent blog posts
+{% endcomment %}
+<div class="sidebar blog">
+  <div class="block">
+    <div class="block-title">
+        <h3>{{ 'blogs.sidebar.recent_articles' | t }}</h3>
+    </div> 
+    <div class="block-content">
+      <ul>
+        {% for article in blogs[blog.handle].articles limit:6 %}
+          <li>
+            <a href="{{ article.url }}">{{ article.title }}</a> 
+          </li>
+        {% endfor %}
+      </ul>
+    </div> 
+  </div>
+  {% comment %}
+    Blog tags
+  {% endcomment %}
+  {% if blog.all_tags.size > 0 %} 
+  <div class="block">
+    <div class="block-title">
+        <span>{{ 'blogs.sidebar.tags' | t }}</span>
+    </div> 
+    <div class="block-content">
+      <ul class="no-bullets">
+        {% for tag in blog.all_tags %}
+          {% if current_tags contains tag %}
+          <li><i class="fa fa-tag"></i> {{ tag }}</li>
+          {% else %}
+          <li><i class="fa fa-tag"></i> {{ tag | link_to_tag: tag }}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+</div>

@@ -1,0 +1,50 @@
+<!-- /templates/list-collections.liquid -->
+
+{% comment %}
+
+  This page represents the /collections and /products pages.
+  It is an optional, but highly recommended, template for your theme.
+
+  More info:
+    - http://docs.shopify.com/manual/configuration/store-customization/taking-control-of-collections-listing
+
+{% endcomment %}
+
+{% include 'small-header' %}
+<section class="page-content no-padding-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="inpage-title text-center">
+            <h1 class="page-title">Collections</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products-grid no-padding-top">
+    <div class="container">
+        <div class="row products-container">
+            {% comment %}
+              Loop through each collection, except 'frontpage'
+            {% endcomment %}
+            {% for collection in collections %}
+                {% unless collection.handle == 'frontpage' %}
+                    {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+                    <div class="col-md-4 col-sm-6 col-xs-12 product">
+                        <div class="thumbnail" style="background-image: url('{{ collection.image.src | img_url: 'grande' }}');">
+                            <div class="product-details text-center">
+                                <div class="align-vertical">
+                                    <h3>{{ collection_title }}</h3>
+                                    <a href="{{ collection.url }}" class="btn btn-primary" title="{{ 'collections.general.link_title' | t: title: collection_title }}"> View {{ collection_title }} <i class="fa fa-long-arrow-right"></i></a>
+                                    <p class="product-price">{{ collection.all_products_count }} {{ collection.all_products_count | pluralize: 'Item', 'Items' }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endunless %}
+            {% endfor %}
+        </div>
+    </div>
+</section>

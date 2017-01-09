@@ -1,0 +1,29 @@
+<!-- /snippets/home-action-bar.liquid -->
+
+{% assign button_1_link = settings.button_1_link %}
+{% assign button_1_icon = settings.button_1_icon %}
+{% assign button_1_text = settings.button_1_text %}
+
+{% assign button_2_link = settings.button_2_link %}
+{% assign button_2_icon = settings.button_2_icon %}
+{% assign button_2_text = settings.button_2_text %}
+
+{% assign button_3_link = settings.button_3_link %}
+{% assign button_3_icon = settings.button_3_icon %}
+{% assign button_3_text = settings.button_3_text %}
+
+<div class="action-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <a href="{{ button_1_link }}"><span data-icon="{{ button_1_icon }}" class="icon"></span> <span class="text">{{ button_1_text }}</span></a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{{ button_2_link }}"><span data-icon="{{ button_2_icon }}" class="icon"></span> <span class="text">{{ button_2_text }}</span></a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{{ button_3_link }}"><span data-icon="{{ button_3_icon }}" class="icon"></span> <span class="text">{{ button_3_text}}</span></a>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</div>

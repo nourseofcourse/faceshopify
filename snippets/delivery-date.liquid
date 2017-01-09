@@ -1,0 +1,52 @@
+<!-- /snippets/delivery-date.liquid -->
+
+{{ 'jqueryui.min.css' | asset_url | stylesheet_tag }}
+{{ 'jqueryui.min.js' | asset_url | script_tag }}
+
+<label for="date">Pick a delivery date:</label>
+<input id="actual-date" class="hidden" type="text" name="attributes[date]" value="{{ cart.attributes.date }}" />
+<div id="delivery-date"></div>
+
+<script>
+jQuery(function() {
+  
+  
+  // Store all unavailable days in an array
+  var days =  new Array();
+      {% unless settings.delivery_default_date == blank %} var default_date = "{{ settings.delivery_default_date }}";{% endunless %}
+      {% unless settings.delivery_max_date == blank %} var max_date = "+{{ settings.delivery_max_date }}w";{% endunless %}
+      {% unless settings.delivery_min_date == blank %} var min_date = "+{{ settings.delivery_min_date }}";{% endunless %}
+     
+  // Get all unavailable days from settings page
+  {% if settings.delivery_monday == false %} days.push(1); {% endif %}
+  {% if settings.delivery_tuesday == false %} days.push(2); {% endif %}
+  {% if settings.delivery_wednesday == false %} days.push(3); {% endif %}
+  {% if settings.delivery_thursday == false %} days.push(4); {% endif %}
+  {% if settings.delivery_friday == false %} days.push(5); {% endif %}
+  {% if settings.delivery_saturday == false %} days.push(6); {% endif %}
+  {% if settings.delivery_sunday == false %} days.push(0); {% endif %}
+  
+  //Initialize datepicker
+  jQuery("#delivery-date").datepicker( { 
+    minDate: +1, 
+    altField: "#actual-date",
+    {% unless settings.delivery_default_date == blank %}defaultDate: default_date,{% endunless %}
+    {% unless settings.delivery_max_date == blank %}maxDate: max_date ,{% endunless %}
+    {% unless settings.delivery_min_date == blank %}minDate: min_date, {% endunless %}
+    dateFormat: "mm-dd-yy",
+    beforeShowDay: function(date) {
+      if($.inArray(date.getDay(), days) > -1){
+          return [false,"",$.datepicker.formatDate('DD', date)+" is NOT available"];
+      } else {
+          return [true,'',$.datepicker.formatDate('DD', date)+" is available"];
+      }
+    }
+  });
+  
+  
+  
+  
+  
+  
+});
+</script>

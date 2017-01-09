@@ -1,0 +1,52 @@
+{% comment %}
+  MailChimp is the go-to newsletter service for Shopify.
+  Use the link below to find your MailChimp form action
+  and insert it in your site settings.
+
+  MailChimp newsletter integration and requirement:
+   - http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action
+{% endcomment %}
+
+{% if settings.newsletter_form_action != blank %}
+  {% assign form_action = settings.newsletter_form_action %}
+{% else %}
+  {% assign form_action = '#' %}
+{% endif %}
+
+{% unless template contains 'customers' %}
+  {% if settings.show_newsletter %}
+    <section class="newsletter accent-bg">
+        <div class="parallax overlay accent" style="background: url('{{ 'newsletter.jpg' | asset_url }}')" data-stellar-background-ratio="0.9">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 text-left">
+                    <h2 class="page-title">{{ settings.newsletter_title }}</h2>
+                    <p>{{ settings.newsletter_description }}</p>
+                </div>
+                <form class="newsletter-form" action="{{ form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                  <div class="col-md-4">
+                      <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="Your email" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+                      <label id="fc-response" for="mail"></label>
+                  </div>
+                  <div class="col-md-3">
+                      <input type="submit" class="btn btn-primary" name="subscribe" id="subscribe" value="{{ settings.newsletter_button_submit }}">
+                  </div>
+                </form>
+                <script type="text/javascript">
+                  jQuery(document).ready(function() {  
+                    var $_form = jQuery('#mc-embedded-subscribe-form');
+                    var $_action = $_form.attr('action');
+                    $_form.ajaxChimp({
+                      url: $_action,
+                      callback: function(resp){  
+                        $('#fc-response').show();
+                      }
+                    });
+                  });
+                </script>
+            </div><!--end of row-->
+        </div><!--end of container-->
+    </section>
+  {% endif %}
+{% endunless %}

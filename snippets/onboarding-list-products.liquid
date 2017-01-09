@@ -1,0 +1,40 @@
+<!-- /snippets/onboarding-list-products.liquid -->
+
+<div class="helper-section">
+  <div class="helper-note">
+    <span class="helper-icon"></span>
+    <h3>{{ 'collections.onboarding.modal_title' | t }}</h3>
+    <p>{{ 'collections.onboarding.no_products_html' | t }}</p>
+    <p><a href="/admin/products/new" class="admin-btn-primary">{{ 'collections.onboarding.add_product' | t }}</a></p>
+  </div>
+
+{% assign index = 1 %}
+{% for i in (1..6) %}
+      <div class="row">
+          <div class="col-md-12">
+              <div class="product">
+                  <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                          <div class="thumbnail">
+                              {% capture imageUrl %}//cdn.shopify.com/s/images/themes/product-{{ index }}.png{% endcapture %}
+                              <img src="{{ imageUrl }}" alt="">
+                          </div>
+                      </div>
+                      <div class="col-md-5 col-md-offset-1">
+                          <div class="product-details">
+                            	<h2 class="product-title">{{ 'homepage.onboarding.product_title' | t }}</h2>
+                              <p class="product-price">
+                                $19
+                              </p>
+                              <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptat et molestiae non.</p>
+
+                              <a href="/admin/products/new" class="btn btn-primary">Add product</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div><!-- /.row -->
+    {% assign index = index | plus: 1 %}
+{% endfor %}
+</div>

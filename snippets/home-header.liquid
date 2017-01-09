@@ -1,0 +1,132 @@
+{% if settings.slider_banner == "slider" %}
+
+  <header class="homepageHeader">
+    <div class="hero-mobile  hidden-sm  hidden-md  hidden-lg">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1>{{ settings.slide_1_title }}</h1>
+          </div>
+        </div>
+      </div>
+      <a href="{{ settings.slide_1_first_btn_link }}" class="btn btn-default hero-button">{{ settings.slide_1_first_btn_text }}</a>
+    </div>
+      <div class="hero-loader  hidden-xs">
+        <div class="spinner"></div>
+      </div>
+      <div class="hero-slider  hidden-xs">
+          {% if settings.slide_1_show or settings.slide_2_show or settings.slide_3_show %}
+
+            {% if settings.slide_1_show %}
+              <div class="slide" style="background: url('{{ 'slide_1.jpg' | asset_url }}') 50% 0%;" data-stellar-background-ratio="0.9">
+                  <div class="container align-vertical hero">
+                      <div class="row">
+                          <div class="{% if settings.slide_1_text_align == "left" %}col-sm-5 {% else %}col-sm-5 col-sm-offset-7{% endif %} text-left">
+                              <h2 class="page-title">{{ settings.slide_1_title }}</h2>
+                              <p>{{ settings.slide_1_description }}</p>
+                              {% if settings.slide_1_show_first_btn or settings.slide_1_show_second_btn %}
+                                <div class="button-group">
+                                    {% if settings.slide_1_show_first_btn %}
+                                      <a href="{{ settings.slide_1_first_btn_link }}" class="btn btn-default">{{ settings.slide_1_first_btn_text }}</a>
+                                    {% endif %}
+                                    {% if settings.slide_1_show_second_btn %}
+                                      <a href="{{ settings.slide_1_second_btn_link }}" class="btn btn-primary">{{ settings.slide_1_second_btn_text }}</a>
+                                    {% endif %} 
+                                </div>
+                              {% endif %}
+                          </div>
+                      </div><!--end of row-->
+                  </div><!--end of container-->
+              </div>
+            {% endif %}
+            {% if settings.slide_2_show %}
+              <div class="slide" style="background: url('{{ 'slide_2.jpg' | asset_url }}') 50% 0%;" data-stellar-background-ratio="0.9">
+                  <div class="container align-vertical hero">
+                      <div class="row">
+                          <div class="{% if settings.slide_2_text_align == "left" %}col-sm-5 {% else %}col-sm-5 col-sm-offset-7{% endif %} text-left">
+                              <h2 class="page-title">{{ settings.slide_2_title }}</h2>
+                              <p>{{ settings.slide_2_description }}</p>
+                              {% if settings.slide_2_show_first_btn or settings.slide_2_show_second_btn %}
+                                <div class="button-group">
+                                    {% if settings.slide_2_show_first_btn %}
+                                      <a href="{{ settings.slide_2_first_btn_link }}" class="btn btn-default">{{ settings.slide_2_first_btn_text }}</a>
+                                    {% endif %}
+                                    {% if settings.slide_2_show_second_btn %}
+                                      <a href="{{ settings.slide_2_second_btn_link }}" class="btn btn-primary">{{ settings.slide_2_second_btn_text }}</a>
+                                    {% endif %}  
+                              </div>
+                              {% endif %}
+                          </div>
+                      </div><!--end of row-->
+                  </div><!--end of container-->
+              </div>
+            {% endif %}
+            {% if settings.slide_3_show %}
+              <div class="slide" style="background: url('{{ 'slide_3.jpg' | asset_url }}') 50% 0%;" data-stellar-background-ratio="0.9">
+                  <div class="container align-vertical hero">
+                      <div class="row">
+                          <div class="{% if settings.slide_3_text_align == "left" %}col-sm-5 {% else %}col-sm-5 col-sm-offset-7{% endif %} text-left">
+                              <h2 class="page-title">{{ settings.slide_3_title }}</h2>
+                              <p>{{ settings.slide_3_description }}</p>
+                              {% if settings.slide_3_show_first_btn or settings.slide_3_show_second_btn %}
+                                <div class="button-group">
+                                    {% if settings.slide_3_show_first_btn %}
+                                      <a href="{{ settings.slide_3_first_btn_link }}" class="btn btn-default">{{ settings.slide_3_first_btn_text }}</a>
+                                    {% endif %}
+                                    {% if settings.slide_3_show_second_btn %}
+                                      <a href="{{ settings.slide_3_second_btn_link }}" class="btn btn-primary">{{ settings.slide_3_second_btn_text }}</a>
+                                    {% endif %}  
+                              </div>
+                              {% endif %}
+                          </div>
+                      </div><!--end of row-->
+                  </div><!--end of container-->
+              </div>
+            {% endif %}
+
+          {% else %}	
+
+              <div class="slide" style="background: url('{{ 'slide_default.jpg' | asset_url }}') 50% 0%;" data-stellar-background-ratio="0.9">
+                  <div class="container align-vertical hero">
+                      <div class="row">
+                          <div class="col-sm-5 text-left">
+                              <h2 class="page-title">Editing slides</h2>
+                            <p>To edit a slide go <a href="/admin/themes/46536837/editor" target="_blank">here</a>, click on <strong>Slider</strong>, add images, text and buttons, then click <strong>Save</strong>.</p>
+                              <div class="button-group">
+                                  <a href="/admin/themes/46536837/editor" target="_blank" class="btn btn-default">Add slides</a>
+                                  <a href="#" class="btn btn-primary">Shop Now</a>
+                              </div>
+                          </div>
+                      </div><!--end of row-->
+                  </div><!--end of container-->
+              </div>
+
+          {% endif %}
+      </div>
+  </header>
+{% else %}
+  <header class="fullscreen-element">
+      <div class="background-image-holder parallax-background overlay" data-stellar-background-ratio="0.9">
+          <img class="background-image" alt="{{ settings.banner_title }}" src="{{ 'banner.jpg' | asset_url }}">
+      </div>
+
+      <div class="container align-vertical hero">
+          <div class="row">
+              <div class="col-md-5 col-sm-5 {% if settings.banner_caption_position == "right" %}col-md-offset-7 col-sm-offset-7{% endif %} text-left">
+                  <h2 class="page-title">{{ settings.banner_title }}</h2>
+                  <p>{{ settings.banner_description }}</p>
+                  {% if settings.banner_show_first_btn or settings.banner_show_second_btn %}
+                    <div class="button-group">
+                        {% if settings.banner_show_first_btn %}
+                          <a href="{{ settings.banner_first_btn_link }}" class="btn btn-default">{{ settings.banner_first_btn_text }}</a>
+                        {% endif %}
+                        {% if settings.banner_show_second_btn %}
+                          <a href="{{ settings.banner_second_btn_link }}" class="btn btn-primary">{{ settings.banner_second_btn_text }}</a>
+                        {% endif %}  
+                  </div>
+                  {% endif %}
+              </div>
+          </div><!--end of row-->
+      </div><!--end of container-->
+  </header>
+{% endif %}

@@ -1,0 +1,167 @@
+<!-- /templates/page-about.liquid -->
+
+{% comment %}
+
+  Be sure to select page.about as the template from the admin page to have this template take effect.
+
+{% endcomment %}
+
+{% include 'small-header' %}
+
+{% if settings.show_office_photo %}
+  <section class="about">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="thumbnail with-info">
+                      <img src="{{ 'about.jpg' | asset_url }}" alt="About our office">
+                      <div class="info">
+                          <div class="align-vertical">
+                              <span>{{ settings.about_office_photo_caption_line1 }}</span>
+                              <span>{{ settings.about_office_photo_caption_line2 }}</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">	
+              <div class="col-md-4">
+                  <h3>{{ settings.about_office_title }}</h3>
+                  <p class="subtitle">{{ settings.about_office_subtitle }}</p>
+              </div>
+              <div class="col-md-8">
+                  {{ settings.about_office_description }}
+              </div>
+          </div><!-- /.row -->
+      </div><!-- /.container -->
+  </section>
+{% endif %}
+
+{% if settings.show_team_slider %}
+  <section class="team {% if settings.show_office_photo %}no-padding-top{% endif %}">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="team-carousel">
+                  {% if settings.show_team1 %}
+                  <div class="col-sm-4">
+                      <div class="thumbnail with-info">
+                          <img src="{{ 'team1.jpg' | asset_url }}" alt="">
+                          <div class="info">
+                              <div class="align-vertical">
+                                  <span>{{ settings.team1_year }}</span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="member-info">
+                          <h3 class="name">{{ settings.team1_name}}</h3>
+                          <p class="position">{{ settings.team1_position}}</p>
+                          <p>{{ settings.team1_description}}</p>
+                      </div>
+                  </div>
+                  {% endif %}
+                  {% if settings.show_team2 %}
+                  <div class="col-sm-4">
+                      <div class="thumbnail with-info">
+                          <img src="{{ 'team2.jpg' | asset_url }}" alt="">
+                          <div class="info">
+                              <div class="align-vertical">
+                                  <span>{{ settings.team2_year }}</span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="member-info">
+                          <h3 class="name">{{ settings.team2_name}}</h3>
+                          <p class="position">{{ settings.team2_position}}</p>
+                          <p>{{ settings.team2_description}}</p>
+                      </div>
+                  </div>
+                  {% endif %}
+                  {% if settings.show_team3 %}
+                  <div class="col-sm-4">
+                      <div class="thumbnail with-info">
+                          <img src="{{ 'team3.jpg' | asset_url }}" alt="">
+                          <div class="info">
+                              <div class="align-vertical">
+                                  <span>{{ settings.team3_year }}</span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="member-info">
+                          <h3 class="name">{{ settings.team3_name}}</h3>
+                          <p class="position">{{ settings.team3_position}}</p>
+                          <p>{{ settings.team3_description}}</p>
+                      </div>
+                  </div>
+                  {% endif %}
+                  {% if settings.show_team4 %}
+                  <div class="col-sm-4">
+                      <div class="thumbnail with-info">
+                          <img src="{{ 'team4.jpg' | asset_url }}" alt="">
+                          <div class="info">
+                              <div class="align-vertical">
+                                  <span>{{ settings.team4_year }}</span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="member-info">
+                          <h3 class="name">{{ settings.team4_name}}</h3>
+                          <p class="position">{{ settings.team4_position}}</p>
+                          <p>{{ settings.team4_description}}</p>
+                      </div>
+                  </div>
+                  {% endif %}
+                  {% if settings.show_team5 %}
+                  <div class="col-sm-4">
+                      <div class="thumbnail with-info">
+                          <img src="{{ 'team5.jpg' | asset_url }}" alt="">
+                          <div class="info">
+                              <div class="align-vertical">
+                                  <span>{{ settings.team5_year }}</span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="member-info">
+                          <h3 class="name">{{ settings.team5_name}}</h3>
+                          <p class="position">{{ settings.team5_position}}</p>
+                          <p>{{ settings.team5_description}}</p>
+                      </div>
+                  </div>
+                  {% endif %}
+              </div>
+          </div><!-- /.row -->
+      </div><!-- /.container -->
+  </section>
+{% endif %}
+
+{% if settings.show_about_content %}
+  <section class="page-content {% if settings.show_office_photo == false and settings.show_team_slider == false  %} {% else %}no-padding-top {% endif %}">
+    <div class="container">
+      {% if settings.show_office_photo == false and settings.show_team_slider == false  %}
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="inpage-title text-center">
+                <h1 class="page-title">{{ page.title }}</h1>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      <div class="row">
+        <div class="col-md-12">
+
+          {% comment %}
+            Regular page content goes here.
+          {% endcomment %}
+          <div class="rte">
+            {{ page.content }}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}

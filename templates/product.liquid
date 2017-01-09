@@ -1,0 +1,331 @@
+<!-- /templates/product.liquid -->
+
+{% include 'small-header' %}
+
+<section class="product-single" itemscope itemtype="http://schema.org/Product">
+
+    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+    <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'master' }}">
+
+    {% comment %}
+      Get first variant, or deep linked one
+  {% endcomment %}
+  
+  {% assign current_variant = product.selected_or_first_available_variant %}
+
+  {% comment %}
+      Get featured image
+  {% endcomment %}
+
+  {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 product_gallery">
+        <div class="product-main-image">
+          <a class="popup-image" href="{{ featured_image | img_url: 'original' }}">
+          	<img itemprop="image" src="{{ featured_image | img_url: 'original' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg" data-zoomimage="{{ featured_image | img_url: 'original' }}">
+          </a>
+        </div>
+
+        {% comment %}
+              Create thumbnails if we have more than one product image
+          {% endcomment %}
+
+        {% if product.images.size > 1 %}
+        <div class="secondary-images" id="product_gallery">
+          <div class="row">
+            {% for image in product.images %}
+              <div class="secondary-images__image">
+                <a href="{{ image.src | img_url: 'master' }}" data-image="{{ image.src | img_url: 'master' }}" data-zoomimage="{{ image.src | img_url: 'original' }}" id="{{ image.id }}">
+                  <img src="{{ image.src | img_url: 'medium' }}" alt="{{ image.alt | escape }}" style="max-width: 75px">
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        
+      </div>
+      <div class="col-md-5">
+        <div class="product-details">
+          <div class="product-description-wrapper">
+            <h2 itemprop="name" class="page-title product-name">{{ product.title }}</h2>
+            <span class="hidden">{{ 'products.general.regular_price' | t }}</span>
+            <p class="product-price" itemprop="price">{{ current_variant.price | money }}</p>
+                {% if product.compare_at_price_max > product.price %}
+                    <span class="hidden">{{ 'products.general.sale_price' | t }}</span>
+                    <p id="ComparePrice">
+                      <s>{{ current_variant.compare_at_price | money }}</s>
+                    </p>
+                {% endif %}
+            <div itemprop="description" class="product-description">{{ product.description | truncatewords: 18 }}</div>
+
+            <div class="product-social">
+                <a href="//www.facebook.com/sharer.php?u={{ shop.url }}{{ product.url }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="//twitter.com/share?url={{ shop.url }}{{ product.url }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="//plus.google.com/share?url={{ shop.url }}{{ product.url }}" target="_blank"><i class="fa fa-google-plus"></i></a>
+                <a href="//pinterest.com/pin/create/button/?url={{ shop.url }}{{ product.url }}&media={{ product.featured_image.src | img_url: 'master' }}&description={{ product.description | strip_html }}" target="_blank"><i class="fa fa-pinterest"></i></a>
+            </div>
+          </div>
+
+          <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+            <meta itemprop="price" content="{{ current_variant.price | money }}">
+            <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+                {% comment %}
+                  ID addToCartForm is a selector for the ajax cart plugin
+                {% endcomment %}
+                <form action="/cart/add" method="post" enctype="multipart/form-data" class="form-vertical AddToCartForm">
+
+                  {% assign product_qty = 0 %}
+                    {% for variant in product.variants %}
+                      {% if variant.inventory_quantity > 0 %}
+                        {% assign product_qty = product_qty | plus: variant.inventory_quantity %}
+                      {% endif %}
+                  {% endfor %}
+                  
+                  <div class="variant-options {% unless product.available and product.variants.size > 1 %}hidden{% endunless %}">
+                    
+                      {% if product.available and product.variants.size > 1 %}
+                        {% for option in product.options %}
+                          {% include 'swatch' with option %}
+                        {% endfor %}
+                      {% endif %}
+
+                    {% comment %}
+                      Add product variants as a dropdown.
+                        - By default, each variant (or combination of variants) will display as its own <option>
+                        - To separate these into multiple steps, which we suggest, use option_selection.js (see below)
+
+                      You can leverage jQuery to add a callback on page load and each time the select element changes:
+                        - Include option_selection.js (as seen at the bottom of this file)
+                        - This allows you to use JavaScript anytime the variant dropdown changes
+                        - This also separates out your variant options (ie. size, color, etc.) to separate select elements
+
+                      For more information on products with multiple options, visit:
+                        - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
+                    {% endcomment %}
+                    <select name="id" id="productSelect" class="product-single__variants">
+                      {% for variant in product.variants %}
+                        {% if variant.available %}
+
+                          {% comment %}
+                            Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                          {% endcomment %}
+                          <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+                        {% else %}
+                          <option disabled="disabled">
+                            {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                          </option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                  </div>
+                  
+                    <div class="addtocart-wrapper">
+                      <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+
+                      <button type="submit" name="add" class="btn btn-default AddToCart">
+                        <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+                      </button>
+                    </div>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</section>
+  
+<section class="product-details no-padding-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="product-tabs">
+          <ul class="nav-tabs">
+            <li><a href="#tab_description">{{ settings.tab_description }}</a></li>
+            <li><a href="#tab_reviews">{{ settings.tab_reviews }}</a></li>
+            {% if settings.tab_custom_title != blank %}
+              <li class="">
+                <a href="#tab_custom">{{ settings.tab_custom_title }}</a>
+              </li> 
+            {% endif %}
+          </ul>
+          <div class="tab-content">
+            <div id="tab_description" class="tab-pane">
+              {{ product.description }}
+            </div>
+            <div id="tab_reviews" class="tab-pane">
+              <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+            </div>
+            {% if settings.tab_custom_title != blank %}
+              <div class="tab-pane" id="tab_custom">
+                  {{ settings.tab_custom_content }}
+              </div> 
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+
+
+  
+<ul class="preload-variant-images" style="display: none!important;">
+{% for variant in product.variants %}
+ {% if variant.available %}
+  {% if variant.image.src %}
+    <li data-variant-sku="{{ variant.id }}"><img src="{{ variant.image.src | product_img_url: 'master' }}" alt="{{ variant.image.alt }}" data-image="{{ variant.image.id }}"></li>
+  {% endif %}
+ {% endif %}
+{% endfor %}
+</ul>
+  
+{% include 'linked-options' %}
+  
+<script>
+
+  jQuery(function($) {
+     var selectCallback = function(variant, selector) {
+       
+        if (variant && variant.available) {
+            jQuery('.AddToCart').removeAttr('disabled').removeClass('disabled');
+            if(variant.price < variant.compare_at_price) {
+                jQuery('.product-single .product-price').html(Shopify.formatMoney(variant.price, "{{ shop.money_with_currency_format }}"))
+            } else {
+                jQuery('.product-single .product-price').html(Shopify.formatMoney(variant.price, "{{ shop.money_with_currency_format }}"))
+            }
+                                                                  
+            if ($('.preload-variant-images li').length){                                                     
+              $('.preload-variant-images li').each(function() {
+                    var variant_id = $(this).data("variant-sku");
+                    if (variant.id === variant_id) {
+                      var variant_image = $(this).find('img').attr('src'),
+                          image_id = $(this).find('img').data('image');
+                      $('.product-main-image img').attr("src", variant_image);
+                      $('.product-main-image img').attr("data-zoomimage", variant_image);
+                      $('.popup-image').attr('href', variant_image);
+                      $('.secondary-images a').removeClass('active');
+                      $('.secondary-images #'+image_id).addClass('active');
+                      
+                      {% if settings.enable_zoom %}
+                        $('.zoomContainer').remove();
+                        $('.product-main-image img').removeData('elevateZoom');
+                        $('.product-main-image img').removeData('zoomImage');
+
+                        $("#ProductPhotoImg").elevateZoom({
+                            gallery: "product_gallery",
+                            cursor: "pointer",
+                            zoomType : "inner",
+                            galleryActiveClass: "active",
+                            zoomWindowPosition	: 1,
+                            scrollZoom: false
+                        });
+                      {% endif %}
+               
+                    }
+              });
+            }
+            
+        } else {
+            jQuery('.AddToCart').addClass('disabled').attr('disabled', 'disabled');
+            var message = variant ? "{{ 'products.product.sold_out' | t }}" : "{{ 'products.product.unavailable' | t }}";
+            jQuery('.product-single .product-price').text(message);
+        }
+            
+            
+        // BEGIN SWATCHES
+        if (variant) {
+          var form = jQuery('#' + selector.domIdPrefix).closest('form');
+          for (var i=0,length=variant.options.length; i<length; i++) {
+            var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
+            if (radioButton.size()) {
+              radioButton.get(0).checked = true;
+            }
+          }
+        }
+
+    }
+                                             
+                                         
+    new Shopify.OptionSelectors('productSelect', {
+      product: {{ product | json }},
+      onVariantSelected: selectCallback,
+      enableHistoryState: true
+    });
+    
+    {% if product.available and product.options.size > 1 %}
+      Shopify.linkOptionSelectors({{ product | json }});
+    {% endif %}
+
+    // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+    {% if product.options.size == 1 and product.options.first != 'Title' %}
+      $('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ product.options.first | escape }}</label>');
+    {% endif %}
+
+    // Hide selectors if we only have 1 variant and its title contains 'Default'.
+    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+      $('.selector-wrapper').hide();
+    {% endif %}
+  });
+ 
+</script>
+  
+<script>
+jQuery(function() {
+  jQuery('.swatch :radio').change(function() {
+    var optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
+    var optionValue = jQuery(this).val();
+    jQuery(this)
+      .closest('form')
+      .find('.single-option-selector')
+      .eq(optionIndex)
+      .val(optionValue)
+      .trigger('change');
+  });
+});
+</script>
+ 
+  <script>
+    $(document).ready(function() {
+      $('.secondary-images a').on('click', function(e) {
+        e.preventDefault();
+        
+      	var that = $(this),
+            image_link = that.data('image'),
+            main_image = $('.product-main-image img');
+        
+        $(main_image).attr('src', image_link);
+        $('.popup-image').attr('href', image_link);
+      });
+      
+      $('.popup-image').magnificPopup({
+        type: 'image'
+        // other options
+      });
+    });
+  </script>
+
+{{ 'jqueryui.min.js' | asset_url | script_tag }}
+{{ 'jquery.elevatezoom.js' | asset_url | script_tag }}
+<script>
+  $(document).ready(function() {
+    $('#product-tabs').tabs();
+    {% if settings.enable_zoom %}
+      $("#ProductPhotoImg").elevateZoom({
+          gallery: "product_gallery",
+          cursor: "pointer",
+          zoomType : "inner",
+          galleryActiveClass: "active",
+          zoomWindowPosition	: 1,
+          scrollZoom: false
+      });
+    {% endif %}
+    
+  });
+</script>
+ 

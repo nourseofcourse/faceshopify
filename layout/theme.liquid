@@ -1,0 +1,176 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+
+  <!-- Basic page needs ================================================== -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  {% if settings.favicon_enable %}
+    <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
+  {% endif %}
+
+  <!-- Title and description ================================================== -->
+  <title>
+    {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+  
+  {% if product.url %}
+    <!-- Product Social meta ================================================== -->
+    <meta property="og:title" content="{{ product.title | escape }}" />
+    <meta property="og:url" content="{{ shop.url }}{{ product.url }}" />
+    <meta property="og:description" content="{{ product.description | strip_html }}" />
+    <meta property="og:image" content="{{ product.featured_image.src | img_url: 'master' }}" />
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ product.title | escape }}">
+    <meta name="twitter:description" content="{{ product.description | strip_html }}">
+    <meta name="twitter:image" content="{{ product.featured_image.src | img_url: 'master' }}">
+  {% endif %}
+
+  <!-- Helpers ================================================== -->
+  
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+  
+  <!-- Fonts ================================================== -->
+  <link href='//fonts.googleapis.com/css?family={{ settings.heading_font }}:400,700,600,500,300' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family={{ settings.body_font }}:400,700,600,500,300' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <!-- CSS ================================================== -->
+  {{ 'bootstrap.css' | asset_url | stylesheet_tag }}
+  {{ 'magnific.css' | asset_url | stylesheet_tag }}
+  {{ 'style.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'color.scss.css' | asset_url | stylesheet_tag }}
+
+  <!-- Header hook for plugins ================================================== -->
+  {{ content_for_header }}
+  
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
+  {{ 'modernizr.min.js' | asset_url | script_tag }}
+  {{ 'jquery.js' | asset_url | script_tag }}
+  
+  <!--[if lt IE 9]>
+  {{ 'html5shiv.min.js' | asset_url | script_tag }}
+  {{ 'respond.min.js' | asset_url | script_tag }}
+  <![endif]-->
+  
+  {% comment %}
+    If you store has customer accounts disabled, you can remove the following JS file
+  {% endcomment %}
+  {% if template contains 'customers' %}
+    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {% endif %}
+
+</head>
+
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+
+  {% include 'side-cart' %}
+  {% include 'navigation-fixed' %}
+  <div id="direction-waypoint"></div>
+  <div class="main-container">
+    {{content_for_layout}}
+  </div>
+
+  {% include 'newsletter' %}
+  {% include 'instagram' %}
+  {% include 'footer' %}
+  
+  {% comment %}
+    Theme Scripts
+  {% endcomment %}
+  
+  {{ 'handlebars.min.js' | asset_url | script_tag }}
+  {% include 'ajax-cart-template' %}
+  {{ 'ajax-cart.js' | asset_url | script_tag }}
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  
+  {% include 'general-scripts' %}
+  
+  {{ 'bootstrap.min.js' | asset_url | script_tag }}
+  {{ 'imagesloaded.min.js' | asset_url | script_tag }}
+  {{ 'isotope.min.js' | asset_url | script_tag }}
+  {{ 'stellar.min.js' | asset_url | script_tag }}
+  {{ 'sidr.min.js' | asset_url | script_tag }}
+  {{ 'popup.min.js' | asset_url | script_tag }}
+  {{ 'slick.min.js' | asset_url | script_tag }}
+  {{ 'jquery.ajaxchimp.js' | asset_url | script_tag }}
+  {{ 'instafeed.min.js' | asset_url | script_tag }}
+  {{ 'simplyscroll.js' | asset_url | script_tag }}
+  {{ 'matchheight.js' | asset_url | script_tag }}
+  {{ 'magnific.min.js' | asset_url | script_tag }}
+  {{ 'scripts.js' | asset_url | script_tag }}
+  <script>
+  window.intercomSettings = {
+    app_id: "temb1b6r"
+  };
+</script>
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/temb1b6r';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
+<script>
+  !function() {
+    $('[data-plugin="scrollTo"]').on('click touch', function() {
+      var href= $(this).attr('href'),
+		  navbar = $('.navbar-default');
+
+      $("html, body").animate({ scrollTop: $(href).offset().top - 100 }, 1000);
+    });
+
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+      $('.bf-image').on('click touch', function() {
+        var img = $(this).find('img');
+        var hover = img.attr('data-hover');
+        var original = img.attr('src');
+        img.fadeOut(100, function() {
+          img.attr('src', hover).attr('data-hover', original).fadeIn(500);
+        });
+      });
+    }
+    $('.bf-image').hover(function() {
+      var img = $(this).find('img');
+      var hover = img.attr('data-hover');
+      var original = img.attr('src');
+      img.fadeOut(190, function() {
+          img.attr('src', hover).attr('data-hover', original).fadeIn(500);
+        });
+    }, function() {
+      var img = $(this).find('img');
+      var hover = img.attr('data-hover');
+      var original = img.attr('src');
+      img.fadeOut(100, function() {
+          img.attr('src', hover).attr('data-hover', original).fadeIn(500);
+        });
+    });
+
+    $('.js-play-btn').magnificPopup({
+
+		type: 'iframe',
+		mainClass: 'mfp-fade',
+		removalDelay: 160,
+		preloader: false,
+
+		fixedContentPos: false
+	});
+  }();
+</script>
+<!-- This site is converting visitors into subscribers and customers with OptinMonster - http://optinmonster.com --><script>
+if(window.location.href != "https://1face.com/pages/black-friday") {
+
+var om57e1d1aaa6426,om57e1d1aaa6426_poll=function(){var r=0;return function(n,l){clearInterval(r),r=setInterval(n,l)}}();!function(e,t,n){if(e.getElementById(n)){om57e1d1aaa6426_poll(function(){if(window['om_loaded']){if(!om57e1d1aaa6426){om57e1d1aaa6426=new OptinMonsterApp();return om57e1d1aaa6426.init({"s":"23207.57e1d1aaa6426","staging":0,"dev":0,"beta":0});}}},25);return;}var d=false,o=e.createElement(t);o.id=n,o.src="//a.optnmnstr.com/app/js/api.min.js",o.async=true,o.onload=o.onreadystatechange=function(){if(!d){if(!this.readyState||this.readyState==="loaded"||this.readyState==="complete"){try{d=om_loaded=true;om57e1d1aaa6426=new OptinMonsterApp();om57e1d1aaa6426.init({"s":"23207.57e1d1aaa6426","staging":0,"dev":0,"beta":0});o.onload=o.onreadystatechange=null;}catch(t){}}}};(document.getElementsByTagName("head")[0]||document.documentElement).appendChild(o)}(document,"script","omapi-script");
+}
+
+</script><!-- / OptinMonster -->
+</body>
+</html>

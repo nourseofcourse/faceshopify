@@ -1,0 +1,35 @@
+<!-- /templates/page-holiday-sale.liquid -->
+{% assign featured = settings.home_featured_products %}
+
+{% comment %}
+
+  Be sure to select page.black-friday as the template from the admin page to have this template take effect.
+
+{% endcomment %}
+
+<section class="black-friday  holiday-sale">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6  hidden-xs  hidden-sm">
+        <div class="black-friday-bg  holiday-sale-bg"></div>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <span class="holiday-preheader">HOLIDAY SALE</span>
+        <h1>50% OFF</h1>
+        <h2>ALL WATCHES ON SALE from 12/09-16th.</h2>
+        <a href="#watches" class="bf-btn  bf-btn--header  hidden-sm hidden-xs" data-plugin="scrollTo">shop watches</a>
+        <a href="http://www.youtube.com/watch?v=4BDuOTLlUOg" class="bf-btn  bf-btn--header  bf-btn--outline  hidden-sm  hidden-xs  js-play-btn">watch video</a>
+      </div>
+      <img src="{{ 'holiday-sale.jpg' | asset_url }}" alt="Black Friday 50% Off Classic Watches" class="hidden-md  hidden-lg  img-responsive">
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <img src="{{ 'presslogos.jpg' | asset_url }}" class="img-responsive  hidden-xs" style="margin: 25px auto;">
+    </div>
+  </div>
+</div>
+{% include 'home-products' %}
+

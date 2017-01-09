@@ -1,0 +1,22 @@
+<!-- /templates/404.liquid -->
+<header class="fullscreen-element error-page">
+    <div class="background-image-holder parallax-background overlay" data-stellar-background-ratio="0.9">
+        <img class="background-image" alt="Collection Background" src="{{ '404.jpg' | asset_url }}">
+    </div>
+    <div class="container align-vertical hero error">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <h1>{{ settings.error_title }}</h1>
+              	<p>{{ settings.error_text }}</p>
+                <div class="button-group">
+                  	{% if settings.error_first_btn_show %}
+                    	<a href="{{ settings.error_first_btn_link }}" class="btn btn-default">{{ settings.error_first_btn_text }}</a>
+                  	{% endif %}
+                    {% if settings.error_second_btn_show %}
+                    	<a href="{{ settings.error_second_btn_link }}" class="btn btn-primary">{{ settings.error_second_btn_text }}</a>
+                  	{% endif %}
+                </div>
+            </div>
+        </div><!--end of row-->
+    </div><!--end of container-->
+</header>
